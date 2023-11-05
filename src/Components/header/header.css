@@ -1,0 +1,19 @@
+.logo_image{
+    /* border: 2px solid red; */
+    height: 100px;
+}
+
+ul{
+    /* border: 2px solid red; */
+    margin: 0 5px;
+    padding: 0 5px;
+}
+
+
+
+@media (max-width: 768px) {
+   
+    .logo_image{
+    height: 50px;
+    }
+}
