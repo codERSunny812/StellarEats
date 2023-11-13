@@ -8,7 +8,12 @@ import { BiUserCircle } from 'react-icons/bi'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 const Logo = () => {
-    return <img src="https://i.pinimg.com/474x/05/64/db/0564db618b8e778534e882cfda48dd2f.jpg" alt="logo" className='logo_image' />
+  return ( 
+  <a href="/" target="_blank" rel="noopener noreferrer">
+      <img src="https://png.pngtree.com/png-vector/20220708/ourmid/pngtree-fast-food-logo-png-image_5763171.png" alt="logo" className='logo_image' />
+  </a>
+  
+  )
 }
 
 const Header = () => {
