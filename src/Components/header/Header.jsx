@@ -6,7 +6,8 @@ import { BiSolidOffer } from 'react-icons/bi'
 import { IoHelpBuoyOutline } from "react-icons/io5";
 import { BiUserCircle } from 'react-icons/bi'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
-
+// import {Link} from 'react-router-dom';
+ 
 const Logo = () => {
   return ( 
   <a href="/" target="_blank" rel="noopener noreferrer">
@@ -22,8 +23,9 @@ const Header = () => {
     <div className="header">
     <Logo className="header_image"/>
     <ul>
-          <li> <BsSearch /> <span>search</span>   </li>
-        <li><BiSolidOffer /> <span>offer</span></li>
+     
+          <li> <BsSearch /><span>search</span>   </li>
+          <li><BiSolidOffer /> <span>offer</span></li>
           <li><IoHelpBuoyOutline /><span>help</span></li>
           <li><BiUserCircle /><span>sign in</span></li>
           <li><AiOutlineShoppingCart /><span>cart</span></li>
