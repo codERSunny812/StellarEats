@@ -1,3 +1,10 @@
-.searchBar{
-    margin: 10%;
+.searchBar {
+/* border: 2px solid gold; */
+}
+
+.searchpanel {
+    /* border: 2px solid red; */
+    border: 1px solid black;
+    outline: none;
+    width: 100%;
 }
