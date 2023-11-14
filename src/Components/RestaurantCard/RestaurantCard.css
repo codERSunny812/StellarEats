@@ -1,0 +1,42 @@
+.card {
+    width: 250px;
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    border-radius: 12px;
+    padding: 10px;
+
+}
+
+.card>img {
+    width: 100%;
+    height: 200px;
+    border-radius: 9px;
+}
+
+.card>h3,
+h2,
+h5 {
+    /* border: 2px solid red; */
+    /* text-align: center; */
+    font-weight: 800;
+}
+
+.card:hover {
+    border: 0.5px solid black;
+    transform: scaleY(0.86);
+}
+
+.newCont {
+    /* border: 2px solid royalblue; */
+    display: flex;
+    /* /* justify-content: center; */
+    align-items: center;
+
+}
+
+.newCont>h4,
+h5 {
+    font-weight: 100;
+    font-size: 14px;
+    padding: 3px;
+}
