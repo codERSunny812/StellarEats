@@ -23,7 +23,8 @@ h5 {
 
 .card:hover {
     border: 0.5px solid black;
-    transform: scaleY(0.86);
+    transform:scale(0.88,0.88);
+    /* transform: scaleX(0.86); */
 }
 
 .newCont {
