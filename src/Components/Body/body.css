@@ -4,3 +4,12 @@
     /* display: none; */
 }
 
+@media (max-width: 768px) {
+
+   .searchCont{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 20%;
+   }
+}
