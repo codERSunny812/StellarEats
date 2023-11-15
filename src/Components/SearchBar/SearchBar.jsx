@@ -1,13 +1,13 @@
 // SearchBar.js
 import React, { useState } from 'react';
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ searchFun }) => {
   const [word, setWord] = useState("");
-
+  
   const handleInputChange = (e) => {
     const searchTerm = e.target.value;
     setWord(searchTerm);
-    onSearch(searchTerm);
+    searchFun(searchTerm);
   };
 
   return (
