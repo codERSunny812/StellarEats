@@ -4,7 +4,7 @@ import './RestaurantCard.css'
 
 const RestaurantCard = (props) => {
     // console.log(restaurant);
-    // console.log(props)
+    // console.log(props);
     const { card } = props;
     // console.log(card);
 
