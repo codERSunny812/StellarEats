@@ -12,9 +12,14 @@ ul{
 
 li:hover, span :hover {
 color:orangered;
+cursor: pointer;
+
 }
-
-
+ 
+.link{
+    text-decoration: none;
+    color: black;
+}
 
 @media (max-width: 768px) {
    
