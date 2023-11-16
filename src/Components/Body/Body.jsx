@@ -1,45 +1,48 @@
 import React, { useEffect, useState } from 'react'
 import './body.scss';
 import './body.css';
-import { URL, restaurantList } from '../../constant';
+import { URL } from '../../constant';
 import RestaurantCard from '../RestaurantCard/RestaurantCard';
 import SearchBar from '../SearchBar/SearchBar'
 import Shimmer from '../Shimmmer/Shimmer';
+import NoRestaurant from '../NoRestaurant/NoRestaurant';
 
 
 
 const Body = () => {
 
-  const [restaurants, setRestaurant] = useState(null);
+  const [filtredRestaurant, setFiltredRestaurant] = useState(null);
+  const [allrestaurant,setAllRestaurant] = useState(null)
 
   const filterRestaurant = (searchTerm) => {
-    if(restaurants == null){
-      return;
-    }
-    const filteredRestaurant = restaurants.filter(
+    const searchedRestaurant = allrestaurant.filter(
       (ele) => ele.info.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setRestaurant(filteredRestaurant);
+    setFiltredRestaurant(searchedRestaurant);
   };
 
   // call api 
   useEffect(() => {
     getRestaurant();
-  }, [])
+  }, []);
 
   async function getRestaurant() {
-    const data = await fetch(URL);
-    const json = await data.json();
-    // console.log(json);
-    // console.log(json?.data?.success?.cards.length);
-    // setRestaurant(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
-    if (json?.data?.success?.cards.length == 5){
-    setRestaurant(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+    try {
+      const data = await fetch(URL);
+      const json = await data.json();
+      console.log(json.data.cards);
+
+      
+      setFiltredRestaurant(json.data.cards[3].card.card.gridElements.infoWithStyle.restaurants);
+      setAllRestaurant(json.data.cards[3].card.card.gridElements.infoWithStyle.restaurants);
+    } catch (error) {
+      console.error('Error fetching data:', error);
     }
-    else{
-      setRestaurant(json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
-    }
+    
   }
+
+//  early return 
+  // if (!allrestaurant ) return null;
   return (
     <>
       <div className="searchCont">
@@ -47,19 +50,25 @@ const Body = () => {
       </div>
 
       <div className='bodyCard'>
-
         {
-          restaurants != null ? (
-          restaurants.map((element) => {
-            return (
-              <RestaurantCard card={element.info} delivaryInfo={element.info.sla} key={element.info.id} />
+          
+          allrestaurant != null ? (
+
+            filtredRestaurant.length != 0 ?(
+            filtredRestaurant.map((element) => {
+              return (
+                <RestaurantCard card={element.info} delivaryInfo={element.info.sla} key={element.info.id} />
+              )
+            })
+            ) : (
+            <NoRestaurant/>
             )
-          })
-          ) : <Shimmer/>
+
+          ) : <Shimmer />
 
         }
       </div>
-     
+
     </>
   );
 }
