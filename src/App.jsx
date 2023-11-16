@@ -1,9 +1,11 @@
 import Header from './Components/header/Header'
 import Body from './Components/Body/Body'
 import Footer from './Components/Footer/Footer'
-import {createBrowserRouter} from 'react-router-dom'
+import {Outlet, createBrowserRouter} from 'react-router-dom'
 import Help from './Components/Help/Help'
 import Error from './Components/Error/Error'
+import SignIn from './Components/SignIn/SignIn'
+import Cart from './Components/Cart/Cart'
 
 
 
@@ -14,7 +16,7 @@ function App() {
     <>
     
      <Header/>
-     <Body/>
+     <Outlet/>
      <Footer />
     </>
   )
@@ -24,12 +26,28 @@ const AppRouter = createBrowserRouter([
   {
     path:'/',
     element:<App/>,
-    errorElement:<Error/>
-  },
-  {
-    path:'/help',
-    element:<Help/>
+    errorElement:<Error/>,  //now we want that our header and footer still shown if we route to other  page ,for that we create the child of this 
+    children:[
+      {
+      path:'/',
+      element:<Body/>
+      },
+      {
+        path: '/help',
+        element: <Help />
+      },
+      {
+        path: '/signin',
+        element: <SignIn />
+      },
+      {
+        path: '/cart',
+        element: <Cart />
+      }
+    ]
   }
+  
+  
 ]);
 
 export default AppRouter;
