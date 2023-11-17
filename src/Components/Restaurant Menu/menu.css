@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+.menuContainer {
+    /* border: 2px solid black; */
+    margin-top: 120px;
+    width: 100%;
+}
+
+.firstBox {
+    display: flex;
+    justify-content: space-between;
+    /* border: 2px solid hotpink; */
+    width: 100%;
+    /* Add a border for visualization */
+    padding: 10px;
+    /* Add some padding for visualization */
+}
+
+.restaurantName h2{
+    font-family: 'Open Sans', sans-serif;   
+}
+
+.restaurantName h4 , h5{
+    font-family: 'Barlow', sans-serif;
+}
+
+.rating {
+    text-align: center;
+    border: 1px solid rgb(1, 1, 1);
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* width: 100%; */
+}
+
+.avgRating{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid hotpink; */
+    margin-bottom:5px;
+}
+
+.avgRating p , p{
+    font-family: 'Barlow', sans-serif;
+}
+
+.message{
+    /* border: 2px solid hotpink; */
+    text-align: center;
+}
+.message > .icon{
+text-align: center;
+margin: auto;
+}
+
+.line{
+    margin-left: 2px;
+    margin-right: 2px;
+    font-weight: 600;
+}
+
+.dottedLine{
+    /* border:2px solid gold; */
+    width: 100%;
+    border-top: 1.1px dashed black;
+}
+
+.secondBox{
+    /* border: 2px solid black; */
+    margin: 2px;
+}
+
+.box1{
+    /* border: 2px solid yellow; */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 19px;
+    margin: 4px;
+    display: flex;
+}
+
+.box1 h2{
+    /* border: 2px solid yellowgreen; */
+    padding: 2px;
+    font-size: 19px;
+    text-transform: capitalize;
+}
+
+.box1 h3{
+    /* border: 2px solid darkgoldenrod; */
+    font-size: 19px;
+    margin: 8px;
+}
+
+.menuIcon{
+    height: 30px;
+    
+}
+
+.delivaryTime , .rate{
+    /* border: 2px solid darkgreen; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px ;
+}
+
+.thirdBox{
+    /* border: 2px solid fuchsia; */
+    display: flex;
+    margin: 12px;
+}
