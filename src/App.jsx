@@ -6,6 +6,7 @@ import Help from './Components/Help/Help'
 import Error from './Components/Error/Error'
 import SignIn from './Components/SignIn/SignIn'
 import Cart from './Components/Cart/Cart'
+import Menu from './Components/Restaurant Menu/Menu'
 
 
 
@@ -42,6 +43,10 @@ const AppRouter = createBrowserRouter([
       {
         path: '/cart',
         element: <Cart />
+      },
+      {
+      path:'/restaurant/:id',
+      element:<Menu/>
       }
     ]
   }
