@@ -25,14 +25,11 @@ const Body = () => {
   useEffect(() => {
     getRestaurant();
   }, []);
-
   async function getRestaurant() {
     try {
       const data = await fetch(URL);
       const json = await data.json();
       console.log(json.data.cards);
-
-      
       setFiltredRestaurant(json.data.cards[3].card.card.gridElements.infoWithStyle.restaurants);
       setAllRestaurant(json.data.cards[3].card.card.gridElements.infoWithStyle.restaurants);
     } catch (error) {
@@ -40,7 +37,6 @@ const Body = () => {
     }
     
   }
-
 //  early return 
   // if (!allrestaurant ) return null;
   return (
@@ -48,10 +44,8 @@ const Body = () => {
       <div className="searchCont">
         <SearchBar searchFun={filterRestaurant} />
       </div>
-
       <div className='bodyCard'>
-        {
-          
+        { 
           allrestaurant != null ? (
 
             filtredRestaurant.length != 0 ?(
