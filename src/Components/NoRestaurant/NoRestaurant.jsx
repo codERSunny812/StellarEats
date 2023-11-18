@@ -1,5 +1,5 @@
 import React from 'react'
-import './NoRestaurant.css'
+import './noRestaurant.css'
 import animation from '../animation.json'
 import Lottie from 'lottie-react'
 import './noRestaurant.css'
