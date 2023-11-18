@@ -1,67 +1,52 @@
-import Header from './Components/header/Header'
-import Body from './Components/Body/Body'
-import Footer from './Components/Footer/Footer'
-import {Outlet, createBrowserRouter} from 'react-router-dom'
-import Help from './Components/Help/Help'
-import Error from './Components/Error/Error'
-import SignIn from './Components/SignIn/SignIn'
-import Cart from './Components/Cart/Cart'
-import Menu from './Components/Restaurant Menu/Menu'
-import { useState } from 'react'
-
-
+import Header from "./Components/header/Header";
+import Body from "./Components/Body/Body";
+import Footer from "./Components/Footer/Footer";
+import { Outlet, createBrowserRouter } from "react-router-dom";
+import Help from "./Components/Help/Help";
+import Error from "./Components/Error/Error";
+import SignIn from "./Components/SignIn/SignIn";
+import Cart from "./Components/Cart/Cart";
+import Menu from "./Components/Restaurant Menu/Menu";
 
 function App() {
-
-// const [searchVisible, setSearchVisible] = useState(false); 
-
-  const handleSearchVisibility = () =>{
-    setSearchVisible(!searchVisible);
-  }
-
-  
-
   return (
     <>
-     <Header onSearchClick={handleSearchVisibility} />
+      <Header />
       <Outlet />
-     <Footer />
+      <Footer />
     </>
   );
 }
 
 const AppRouter = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
-    errorElement: <Error />,  //now we want that our header and footer still shown if we route to other  page ,for that we create the child of this 
+    errorElement: <Error />,
+    //now we want that our header and footer still shown if we route to other  page ,for that we create the child.
     children: [
       {
-        path: '/',
-        element: <Body />
+        path: "/",
+        element: <Body />,
       },
       {
-        path: '/help',
-        element: <Help />
+        path: "/help",
+        element: <Help />,
       },
       {
-        path: '/signin',
-        element: <SignIn />
+        path: "/signin",
+        element: <SignIn />,
       },
       {
-        path: '/cart',
-        element: <Cart />
+        path: "/cart",
+        element: <Cart />,
       },
       {
-        path: '/restaurant/:id',
-        element: <Menu />
-      }
-    ]
-  }
-
-
+        path: "/restaurant/:id",
+        element: <Menu />,
+      },
+    ],
+  },
 ]);
-
-
 
 export default AppRouter;
