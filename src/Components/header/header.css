@@ -1,4 +1,5 @@
 .header {
+  /* border: 2px solid black; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8,7 +9,7 @@
   left: 0;
   z-index: 1;
   background-color: #fff;
-  height: 13vh;
+  height: 12vh;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 .header ul {
@@ -33,17 +34,33 @@
   font-weight: 100;
 }
 
+.logo_image{
+  height: 100px;
+}
+
+.link{
+  text-decoration: none;
+  color: black;
+}
+
+li:hover{
+  color: orange;
+}
 /* Media Query for Smaller Screens */
 @media (max-width: 768px) {
   .header {
-    height: 8vh;
+    height: 10vh;
     /* Adjust as needed for smaller screens */
   }
   .header ul li {
-    font-size: 21px;
+    font-size: 25px;
     /* Adjust as needed for smaller screens */
   }
   .header ul li span {
     display: none;
+  }
+
+  .logo_image{
+    height: 60px;
   }
 }/*# sourceMappingURL=header.css.map */
