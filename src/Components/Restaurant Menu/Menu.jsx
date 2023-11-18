@@ -3,17 +3,14 @@ import './menu.css'
 import { useParams } from 'react-router-dom'
 import { imageId } from '../../constant'
 import { AiFillStar } from 'react-icons/ai'
-import { CiLocationOn } from "react-icons/ci";
-import { CgTimer } from "react-icons/cg";
+import { FaLocationDot } from "react-icons/fa6";
+import { PiTimerFill } from "react-icons/pi";
 import { HiOutlineCurrencyRupee } from "react-icons/hi";
 import Discount from './Discount'
-
-
-
-
-
-
-
+import MoreRestauInfo from './MoreRestauInfo'
+import { menuURL } from '../../constant'
+import anim from './Loading.json'
+import Lottie from 'lottie-react'
 
 
 const Menu = () => {
@@ -23,6 +20,7 @@ const Menu = () => {
     // console.log(id); 
     // state variable to show the data 
     const [restaurantMenu,setRestaurantMenu] = useState({});
+    const [loading,setLoading] = useState(true);
 
     // calling the api 
     useEffect(()=>{
@@ -31,12 +29,17 @@ const Menu = () => {
 
     const getRestaurantMenu = async () =>{
         try {
-            const menuData = await fetch("https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.7877845&lng=80.9677658&restaurantId=138854");
+            const menuData = await fetch(
+                `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.7877845&lng=80.9677658&restaurantId=${id}`
+            );
             const menuJson = await menuData.json();
-            // console.log(menuJson.data.cards[0].card.card.info);
-            setRestaurantMenu(menuJson?.data?.cards[0]?.card?.card?.info);
+            console.log(menuJson);
+            setRestaurantMenu(menuJson?.data?.cards[0]?.card?.card.info);
+            // console.log(restaurantMenu);
+            setLoading(false);
         } catch (error) {
             console.error("Error fetching restaurant menu:", error);
+            // setLoading(false);
             // Handle the error (e.g., show a message to the user)
         }
     }
@@ -44,7 +47,12 @@ const Menu = () => {
 
   return (
    <>
-   {/* main container */}
+
+   {
+     loading ? (
+        <Lottie animationData={anim} className='loading'/>
+     ) : (
+    
    <div className="menuContainer">
 
     {/* first box for restaurant info */}
@@ -53,11 +61,10 @@ const Menu = () => {
 
         <div className="restaurantName">
         <h2>{restaurantMenu.name}</h2>
-        <h4>{restaurantMenu.cuisines}</h4>
+        <h4>{restaurantMenu.cuisines.join(" , ")}</h4>
         <h5>{restaurantMenu.areaName}</h5>
         <p className='message'>
-        <CiLocationOn color='black' className='icon'/>
-        
+        <FaLocationDot color='black' className='icon'/>
         {restaurantMenu?.feeDetails?.message}
         </p>
         </div>
@@ -69,21 +76,18 @@ const Menu = () => {
         <h4>{restaurantMenu.avgRating}</h4>
         </div>
         <hr className='line' />
-        
         <h5>{restaurantMenu.totalRatingsString}</h5>
         </div>
 
 
     </div>
 
-{/* dotted line */}
-    <hr className='dottedLine'/>
-
 {/* second box for delivary and rate info */}
+
     <div className="secondBox">
     <div className="box1">
     <div className="delivaryTime">
-    <CgTimer className='menuIcon' />
+    <PiTimerFill className='menuIcon' />
     <h2>{restaurantMenu?.sla?.deliveryTime} mins</h2>
     </div>
     <div className="rate">
@@ -97,15 +101,28 @@ const Menu = () => {
 
 {/* third box for offer info */}
     <div className="thirdBox">
-    <Discount discountInfo={restaurantMenu?.aggregatedDiscountInfo?.descriptionList}/>
+    {restaurantMenu?.aggregatedDiscountInfo?.descriptionList?.length > 0 ? (
+    <Discount discountInfo={restaurantMenu.aggregatedDiscountInfo.descriptionList} /> ) : (
+    <p>No discounts available</p>
+    )}
+
+    </div>
+
+
+    <div className="fourthBox">
+        <MoreRestauInfo/>
     </div>
 
 
 
 
    </div>
+     )
+
+    }
 
    </>
+
   )
 }
 

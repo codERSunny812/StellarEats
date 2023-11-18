@@ -1,0 +1,15 @@
+.restaurantMenu{
+    border: 2px solid black;
+}
+.topLine{
+    display: flex;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: capitalize;
+    padding: 2px;
+}
+
+.topLine h3{
+    margin: 2px;
+    padding: 2px;
+}

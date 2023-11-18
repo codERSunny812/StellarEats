@@ -1,122 +1,138 @@
+/* Font Imports */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&display=swap');
-*{
+
+/* Global Styles */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html,body{
+
+html,
+body {
     height: 100%;
     width: 100%;
 }
+
+/* Container Styles */
 .menuContainer {
-    /* border: 2px solid black; */
     margin-top: 120px;
     width: 100%;
 }
 
+.loading {
+    margin-top: 120px;
+    height: 200px;
+}
+
+/* First Box Styles */
 .firstBox {
     display: flex;
     justify-content: space-between;
-    /* border: 2px solid hotpink; */
     width: 100%;
-    /* Add a border for visualization */
     padding: 10px;
-    /* Add some padding for visualization */
 }
 
-.restaurantName h2{
-    font-family: 'Open Sans', sans-serif;   
+/* Restaurant Name Styles */
+.restaurantName {
+    font-family: 'Open Sans', sans-serif;
 }
 
-.restaurantName h4 , h5{
+.restaurantName h2 {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.restaurantName h4,
+h5 {
     font-family: 'Barlow', sans-serif;
 }
 
+/* Rating Styles */
 .rating {
     text-align: center;
     border: 1px solid rgb(1, 1, 1);
-    border-radius: 9px;
+    border-radius: 11px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* width: 100%; */
 }
 
-.avgRating{
+.avgRating {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border: 2px solid hotpink; */
-    margin-bottom:5px;
+    margin-bottom: 5px;
 }
 
-.avgRating p , p{
+.avgRating p,
+p {
     font-family: 'Barlow', sans-serif;
 }
 
-.message{
-    /* border: 2px solid hotpink; */
+.message>.icon {
     text-align: center;
-}
-.message > .icon{
-text-align: center;
-margin: auto;
+    margin: auto;
 }
 
-.line{
-    margin-left: 2px;
-    margin-right: 2px;
+.line {
+    margin-left: 6px;
+    margin-right: 6px;
     font-weight: 600;
 }
 
-.dottedLine{
-    /* border:2px solid gold; */
-    width: 100%;
-    border-top: 1.1px dashed black;
-}
-
-.secondBox{
-    /* border: 2px solid black; */
+/* Second Box Styles */
+.secondBox {
     margin: 2px;
 }
 
-.box1{
-    /* border: 2px solid yellow; */
+.box1 {
     font-family: 'Open Sans', sans-serif;
     font-size: 19px;
     margin: 4px;
     display: flex;
 }
 
-.box1 h2{
-    /* border: 2px solid yellowgreen; */
+.box1 h2 {
     padding: 2px;
     font-size: 19px;
     text-transform: capitalize;
 }
 
-.box1 h3{
-    /* border: 2px solid darkgoldenrod; */
+.box1 h3 {
     font-size: 19px;
     margin: 8px;
 }
 
-.menuIcon{
+.menuIcon {
     height: 30px;
-    
 }
 
-.delivaryTime , .rate{
-    /* border: 2px solid darkgreen; */
+.delivaryTime,
+.rate {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 3px ;
+    margin: 0 3px;
 }
 
-.thirdBox{
-    /* border: 2px solid fuchsia; */
+/* Third Box Styles */
+.thirdBox {
     display: flex;
     margin: 12px;
+}
+
+/* Media Query for Screens with a Maximum Width of 768px */
+@media (max-width: 768px) {
+    .restaurantName {
+        font-size: 13px;
+    }
+
+    .secondBox {
+        width: fit-content;
+    }
+
+    .rating{
+        width: fit-content;
+    }
 }
