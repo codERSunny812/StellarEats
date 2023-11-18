@@ -6,6 +6,7 @@ import RestaurantCard from '../RestaurantCard/RestaurantCard';
 import SearchBar from '../SearchBar/SearchBar'
 import Shimmer from '../Shimmmer/Shimmer';
 import NoRestaurant from '../NoRestaurant/NoRestaurant';
+import { Link } from 'react-router-dom';
 
 
 
@@ -29,9 +30,10 @@ const Body = () => {
     try {
       const data = await fetch(URL);
       const json = await data.json();
-      console.log(json.data.cards);
-      setFiltredRestaurant(json.data.cards[3].card.card.gridElements.infoWithStyle.restaurants);
-      setAllRestaurant(json.data.cards[3].card.card.gridElements.infoWithStyle.restaurants);
+      console.log(json.data.success.cards[4].gridWidget.gridElements.infoWithStyle.restaurants);
+      // console.log(json.data);
+      setFiltredRestaurant(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+      setAllRestaurant(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -42,7 +44,9 @@ const Body = () => {
   return (
     <>
       <div className="searchCont">
-        <SearchBar searchFun={filterRestaurant} />
+        {/* {isSearchVisible &&  searchbar } */}
+          < SearchBar searchFun={filterRestaurant}/>
+        
       </div>
       <div className='bodyCard'>
         { 
@@ -51,7 +55,9 @@ const Body = () => {
             filtredRestaurant.length != 0 ?(
             filtredRestaurant.map((element) => {
               return (
-                <RestaurantCard card={element.info} delivaryInfo={element.info.sla} key={element.info.id} />
+                <Link to={"/restaurant/"+element.info.id} key={element.info.id} className='link'>
+                <RestaurantCard card={element.info} delivaryInfo={element.info.sla}  />
+                </Link>
               )
             })
             ) : (
