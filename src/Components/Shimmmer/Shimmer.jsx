@@ -1,7 +1,5 @@
 import React from 'react'
 import './Shimmer.css'
-import shimmer from './shimmer.json'
-import Lottie from 'lottie-react'
 const Shimmer = () => {
   return (
    <div className="bodyCard">{
@@ -13,8 +11,6 @@ const Shimmer = () => {
        <div className="delivarytime"></div>
        <div className="cuisines"></div>
        <div className="areaName"></div>
-      {/* <Lottie animationData={shimmer} className='shimmeranim' /> */}
-
      </div>
     
   ))
