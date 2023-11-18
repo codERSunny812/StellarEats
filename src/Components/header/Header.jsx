@@ -18,7 +18,7 @@ const Logo = () => {
   )
 }
 
-const Header = () => {
+const Header = ({ onSearchClick }) => {
   return (
     <>
     <div className="header">
@@ -26,7 +26,7 @@ const Header = () => {
     <ul>
         
          
-          <li> <BsSearch /><span>search</span>   </li>
+          <li onClick={onSearchClick} > <BsSearch /><span>search</span>   </li>
           <li><BiSolidOffer /> <span>offer</span></li>
           <Link to='/help' className='link'><li><IoHelpBuoyOutline /><span>help</span></li>   </Link>
           <Link to='/signin' className='link'><li><BiUserCircle /><span>sign in</span></li> </Link>
