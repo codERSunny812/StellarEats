@@ -1,10 +1,13 @@
 .searchBar {
-/* border: 2px solid gold; */
+border:none;
+outline: none;
+
 }
 
 .searchpanel {
     /* border: 2px solid red; */
-    border: 1px solid black;
+    border: 1.3px solid black;
     outline: none;
-    width: 100%;
+    /* width: 100%; */
+    padding: 3px;
 }
