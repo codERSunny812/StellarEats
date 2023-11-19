@@ -4,9 +4,10 @@ import Footer from "./Components/Footer/Footer";
 import { Outlet, createBrowserRouter } from "react-router-dom";
 import Help from "./Components/Help/Help";
 import Error from "./Components/Error/Error";
-import SignIn from "./Components/SignIn/SignIn";
+import SignUp from "./Components/Account/SignUp";
 import Cart from "./Components/Cart/Cart";
 import Menu from "./Components/Restaurant Menu/Menu";
+import SignIn from "./Components/Account/SignIn";
 
 function App() {
   return (
