@@ -1,11 +1,55 @@
 import React from 'react'
-import './footer.scss'
+import './footer.css'
+import Logo from '../../assets/Logo.svg'
 
 const Footer = () => {
   return (
     <div className="footer">
-    <h1>this is footer</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit facilis beatae velit exercitationem aperiam maiores autem dolore inventore, error, provident earum atque distinctio molestias eum pariatur? Vel saepe ab iure obcaecati totam, perferendis quia veritatis quaerat cupiditate. Quae ut, inventore reprehenderit laboriosam rerum nam temporibus animi eos ipsum soluta nihil impedit optio mollitia? In harum ut nihil beatae, ratione quas ad voluptate inventore veniam maiores saepe corporis ipsa animi! Quisquam sit sed sint repellat quam consequuntur dolore, corrupti culpa nobis cum atque iste reiciendis dignissimos assumenda adipisci? Quos, dolore? Hic dolor consequatur voluptate. Laudantium corporis enim delectus cupiditate et quisquam repellat expedita, ipsum fugiat, assumenda, deleniti tempore consectetur id fuga at laborum reprehenderit voluptatibus iusto accusamus aspernatur quam qui. Modi, assumenda aliquam.</p>
+
+    <div className="mainFooter">
+
+      <div className="part1">
+        <img src={Logo} alt="Website logo" />
+        <h5>©2023 Design and created by sunny</h5>
+      </div>
+
+      <div className="part2 footerHeading">
+        <h3>company</h3>
+        <ul className='footerList'>
+          <li>about</li>
+          <li>careers</li>
+          <li>team</li>
+          <li>swiggy one</li>
+          <li>swiggy  instamart</li>
+          <li>swiggy ginner</li>
+        </ul>
+      </div>
+
+        <div className="part3 footerHeading">
+          <h3>contact us </h3>
+          <ul className='footerList'>
+            <li>terms & conditions</li>
+            <li>cookie policy</li>
+            <li>privacy </li>
+          </ul>
+  
+      </div>
+
+        <div className="part4 footerHeading">
+        <h3>we deliver to:</h3>
+          <ul className='footerList'>
+          <li>banglore</li>
+          <li>gurgaon</li>
+          <li>delhi</li>
+          <li>lucknow</li>
+          <li>mumbai</li>
+          <li>pune</li>
+        </ul>
+      </div>
+
+    </div>
+
+
     </div>
   )
 }
