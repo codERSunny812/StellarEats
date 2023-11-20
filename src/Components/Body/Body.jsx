@@ -12,6 +12,8 @@ const Body = () => {
   const [filtredRestaurant, setFiltredRestaurant] = useState(null);
   const [allrestaurant, setAllRestaurant] = useState(null);
 
+
+  // search logic of the app
   const filterRestaurant = (searchTerm) => {
     const searchedRestaurant = allrestaurant.filter((ele) =>
       ele.info.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -27,10 +29,10 @@ const Body = () => {
     try {
       const data = await fetch(URL);
       const json = await data.json();
-      console.log(
-        json.data.success.cards[4].gridWidget.gridElements.infoWithStyle
-          .restaurants
-      );
+      // console.log(
+      //   json.data.success.cards[4].gridWidget.gridElements.infoWithStyle
+      //     .restaurants
+      // );
       // console.log(json.data);
       setFiltredRestaurant(
         json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
@@ -40,6 +42,8 @@ const Body = () => {
         json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
           ?.restaurants
       );
+      // console.log(filterRestaurant);
+      console.log(allrestaurant);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -69,9 +73,12 @@ const Body = () => {
           ) : (
             <NoRestaurant />
           )
-        ) : (
+        ) :   (
           <Shimmer />
-        )}
+        )
+        
+        
+        }
       </div>
     </>
   );
