@@ -20,7 +20,7 @@ const MoreRestauInfo = () => {
     const data = await fetch(`https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.7877845&lng=80.9677658&restaurantId=${id}`);
     
     const moreRestInfo =  await data.json();
-    console.log(moreRestInfo.data.cards[3].groupedCard.cardGroupMap.REGULAR.cards);
+    // console.log(moreRestInfo.data.cards[3].groupedCard.cardGroupMap.REGULAR.cards);
 
 
 

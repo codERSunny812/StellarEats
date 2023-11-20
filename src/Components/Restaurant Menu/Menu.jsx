@@ -8,9 +8,10 @@ import { PiTimerFill } from "react-icons/pi";
 import { HiOutlineCurrencyRupee } from "react-icons/hi";
 import Discount from './Discount'
 import MoreRestauInfo from './MoreRestauInfo'
-import { menuURL } from '../../constant'
+// import { menuURL } from '../../constant'
 import anim from './Loading.json'
 import Lottie from 'lottie-react'
+// import { useRestauMenu } from '../../util/useRestauMenu'
 
 
 const Menu = () => {
@@ -18,22 +19,25 @@ const Menu = () => {
     // console.log(useParams());
     let {id} = useParams();
     // console.log(id); 
+
     // state variable to show the data 
-    const [restaurantMenu,setRestaurantMenu] = useState({});
+    // const restaurantMenu = useRestauMenu(id);
     const [loading,setLoading] = useState(true);
+    const[restaurantMenu, setRestaurantMenu] = useState({});
 
-    // calling the api 
-    useEffect(()=>{
-     getRestaurantMenu();
-    },[]);
+    // if(restaurantMenu) setLoading(false);
+    // call the api 
+    useEffect(() => {
+        getRestaurantMenu();
+    }, []);
 
-    const getRestaurantMenu = async () =>{
+    const getRestaurantMenu = async () => {
         try {
             const menuData = await fetch(
                 `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.7877845&lng=80.9677658&restaurantId=${id}`
             );
             const menuJson = await menuData.json();
-            console.log(menuJson);
+            // console.log(menuJson);
             setRestaurantMenu(menuJson?.data?.cards[0]?.card?.card.info);
             // console.log(restaurantMenu);
             setLoading(false);
@@ -43,7 +47,8 @@ const Menu = () => {
             // Handle the error (e.g., show a message to the user)
         }
     }
-    // console.log(restaurantMenu?.feeDetails?.message);
+
+  
 
   return (
    <>
