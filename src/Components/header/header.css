@@ -3,18 +3,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width:100%;
   position: fixed;
-  top: 0;
-  left: 0;
+  top:0;
+  left:0;
   z-index: 1;
   background-color: #fff;
   height: 12vh;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  padding:0  6px;
 }
 .header ul {
+  /* border: 2px solid black; */
   display: flex;
-  gap: 15px;
+  gap: 20px;
   justify-content: space-between;
   align-items: center;
   text-decoration: none;
@@ -49,6 +51,7 @@ li:hover{
 /* Media Query for Smaller Screens */
 @media (max-width: 768px) {
   .header {
+    overflow-x: hidden;
     height: 10vh;
     /* Adjust as needed for smaller screens */
   }
