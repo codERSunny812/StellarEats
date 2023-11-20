@@ -9,9 +9,11 @@ import { FaFacebookF } from "react-icons/fa";
 
 
 
-const SignIn = () => {
+const SignIn = (props) => {
+    console.log(props);
     return (
         <>
+    
             <div className="loginContainer">
 
                 <div className="mainsigninContainer">
