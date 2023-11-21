@@ -11,6 +11,30 @@
   margin-top: 120px;
 }
 
+.NoInterNetContainer{
+  /* border: 2px solid black; */
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.NoInterNetContainer h3{
+  /* border: 2px solid red; */
+  text-align: center;
+  text-transform: capitalize;
+ font-family: monospace;
+ letter-spacing: 2px;
+}
+
+.isOnlineAnim{
+  /* border: 2px solid black; */
+  margin: 100px 0;
+  height: 400px;
+  width: 100%;
+}
+
 @media (max-width: 768px) {
 .searchCont{
   display: flex;

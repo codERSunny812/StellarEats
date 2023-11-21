@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import './body.scss';
-import './body.css';
+import "./body.scss";
+import "./body.css";
 import { URL } from "../../constant";
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
 import SearchBar from "../SearchBar/SearchBar";
 import Shimmer from "../Shimmmer/Shimmer";
 import NoRestaurant from "../NoRestaurant/NoRestaurant";
 import { Link } from "react-router-dom";
+import useOnline from "../../util/useOnline";
+import Anim from "./response.json";
+import Lottie from "lottie-react";
 
 const Body = () => {
   const [filtredRestaurant, setFiltredRestaurant] = useState(null);
   const [allrestaurant, setAllRestaurant] = useState(null);
-
 
   // search logic of the app
   const filterRestaurant = (searchTerm) => {
@@ -29,11 +31,6 @@ const Body = () => {
     try {
       const data = await fetch(URL);
       const json = await data.json();
-      // console.log(
-      //   json.data.success.cards[4].gridWidget.gridElements.infoWithStyle
-      //     .restaurants
-      // );
-      // console.log(json.data);
       setFiltredRestaurant(
         json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
           ?.restaurants
@@ -42,12 +39,23 @@ const Body = () => {
         json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
           ?.restaurants
       );
-      // console.log(filterRestaurant);
       console.log(allrestaurant);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }
+
+  // check that the user in Online or not
+  const isOnline = useOnline();
+
+  if (!isOnline)
+    return <>
+      <div className="NoInterNetContainer">
+        <h3>no internet acess</h3>
+        <Lottie animationData={Anim} className="isOnlineAnim" />
+      </div>
+    </>
+
   return (
     <>
       <div className="searchCont">
@@ -73,12 +81,9 @@ const Body = () => {
           ) : (
             <NoRestaurant />
           )
-        ) :   (
+        ) : (
           <Shimmer />
-        )
-        
-        
-        }
+        )}
       </div>
     </>
   );
