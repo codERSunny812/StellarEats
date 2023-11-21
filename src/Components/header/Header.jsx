@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./header.css";
 import { BsSearch } from "react-icons/bs";
 import { BiSolidOffer } from "react-icons/bi";
@@ -26,9 +26,8 @@ const Header = () => {
         <Logo className="header_image" />
         <ul>
           <li>
-            {" "}
             <BsSearch />
-            <span>search</span>{" "}
+            <span>search</span>
           </li>
           <li>
             <BiSolidOffer /> <span>offer</span>
@@ -39,11 +38,11 @@ const Header = () => {
               <span>help</span>
             </li>{" "}
           </Link>
-          <Link to="/signin" className="link">
+          <Link to="/status" className="link">
             <li>
               <BiUserCircle />
               <span>sign in</span>
-            </li>{" "}
+            </li>
           </Link>
           <Link to="/cart" className="link">
             <li>
