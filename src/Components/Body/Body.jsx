@@ -6,7 +6,7 @@ import RestaurantCard from "../RestaurantCard/RestaurantCard";
 import SearchBar from "../SearchBar/SearchBar";
 import Shimmer from "../Shimmmer/Shimmer";
 import NoRestaurant from "../NoRestaurant/NoRestaurant";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useOnline from "../../util/useOnline";
 import Anim from "./response.json";
 import Lottie from "lottie-react";
@@ -15,7 +15,9 @@ const Body = () => {
   const [filtredRestaurant, setFiltredRestaurant] = useState(null);
   const [allrestaurant, setAllRestaurant] = useState(null);
 
-  // search logic of the app
+  //two variable and a hook which all the api and fetch the data
+
+  // search functionalities of the app
   const filterRestaurant = (searchTerm) => {
     const searchedRestaurant = allrestaurant.filter((ele) =>
       ele.info.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -23,10 +25,11 @@ const Body = () => {
     setFiltredRestaurant(searchedRestaurant);
   };
 
-  // call api
+  // Api call to get the restaurant data
   useEffect(() => {
     getRestaurant();
   }, []);
+
   async function getRestaurant() {
     try {
       const data = await fetch(URL);
@@ -39,28 +42,31 @@ const Body = () => {
         json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
           ?.restaurants
       );
-      console.log(allrestaurant);
+      // console.log(allrestaurant);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }
 
-  // check that the user in Online or not
+  // status checker
   const isOnline = useOnline();
 
   if (!isOnline)
-    return <>
-      <div className="NoInterNetContainer">
-        <h3>no internet acess</h3>
-        <Lottie animationData={Anim} className="isOnlineAnim" />
-      </div>
-    </>
+    return (
+      <>
+        <div className="NoInterNetContainer">
+          <h3>no internet acess</h3>
+          <Lottie animationData={Anim} className="isOnlineAnim" />
+        </div>
+      </>
+    );
 
   return (
     <>
       <div className="searchCont">
         <SearchBar searchFun={filterRestaurant} />
       </div>
+
       <div className="bodyCard">
         {allrestaurant != null ? (
           filtredRestaurant.length != 0 ? (
