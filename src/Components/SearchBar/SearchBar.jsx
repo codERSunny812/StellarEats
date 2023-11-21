@@ -1,10 +1,10 @@
 // SearchBar.js
-import React, { useState } from 'react';
-import './searchBar.css'
+import React, { useState } from "react";
+import "./searchBar.css";
 
 const SearchBar = ({ searchFun }) => {
   const [word, setWord] = useState("");
-  
+
   const handleInputChange = (e) => {
     const searchTerm = e.target.value;
     setWord(searchTerm);
