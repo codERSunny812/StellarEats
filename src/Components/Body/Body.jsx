@@ -6,7 +6,7 @@ import RestaurantCard from "../RestaurantCard/RestaurantCard";
 import SearchBar from "../SearchBar/SearchBar";
 import Shimmer from "../Shimmmer/Shimmer";
 import NoRestaurant from "../NoRestaurant/NoRestaurant";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useOnline from "../../util/useOnline";
 import Anim from "./response.json";
 import Lottie from "lottie-react";
