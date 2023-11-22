@@ -1,0 +1,12 @@
+.searchBar {
+  border: none;
+  outline: none;
+}
+
+.searchpanel {
+  /* border: 2px solid red; */
+  border: 1.3px solid black;
+  outline: none;
+  /* width: 100%; */
+  padding: 3px;
+}
