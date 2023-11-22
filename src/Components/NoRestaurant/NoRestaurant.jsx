@@ -1,8 +1,9 @@
 import React from "react";
 import "./noRestaurant.css";
-import animation from "../animation.json";
+import animation from "./animation.json";
 import Lottie from "lottie-react";
 import "./noRestaurant.css";
+
 
 const NoRestaurant = () => {
   return (
