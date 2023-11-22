@@ -29,14 +29,17 @@ const Header = () => {
             <BsSearch />
             <span>search</span>
           </li>
-          <li>
-            <BiSolidOffer /> <span>offer</span>
-          </li>
+          <Link to="/offer" className="link">
+            <li>
+              <BiSolidOffer />
+              <span>offer</span>
+            </li>
+          </Link>
           <Link to="/help" className="link">
             <li>
               <IoHelpBuoyOutline />
               <span>help</span>
-            </li>{" "}
+            </li>
           </Link>
           <Link to="/status" className="link">
             <li>
