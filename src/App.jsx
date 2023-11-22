@@ -8,9 +8,10 @@ import Cart from "./Components/Cart/Cart";
 import Menu from "./Components/Restaurant Menu/Menu";
 import Status from "./Components/Account/Status";
 import { useState } from "react";
+import Offer from "./Components/Offers/Offer";
 
 function App() {
-  const [isVisible, setIsVisible] = useState(false);
+  
 
   return (
     <>
@@ -37,6 +38,10 @@ const AppRouter = createBrowserRouter([
         element: <Help />,
       },
       {
+        path: "/offer",
+        element: <Offer />,
+      },
+      {
         path: "/status",
         element: <Status />,
       },
@@ -47,7 +52,7 @@ const AppRouter = createBrowserRouter([
       {
         path: "/restaurant/:id",
         element: <Menu />,
-      },
+      }
     ],
   },
 ]);
