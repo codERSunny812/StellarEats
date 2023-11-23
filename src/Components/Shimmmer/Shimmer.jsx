@@ -6,7 +6,7 @@ const Shimmer = () => {
       {Array(25)
         .fill("")
         .map(() => (
-          <div className="shimmerCard">
+          <div className="shimmerCard" key={Math.random()}>
             <div className="img"></div>
             <div className="name"></div>
             <div className="avgrating"></div>
