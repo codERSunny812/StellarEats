@@ -14,8 +14,7 @@ import Lottie from "lottie-react";
 const Body = () => {
   const [filtredRestaurant, setFiltredRestaurant] = useState(null);
   const [allrestaurant, setAllRestaurant] = useState(null);
-
-  //two variable and a hook which all the api and fetch the data
+  
 
   // search functionalities of the app
   const filterRestaurant = (searchTerm) => {
@@ -61,6 +60,8 @@ const Body = () => {
       </>
     );
 
+
+
   return (
     <>
       <div className="searchCont">
@@ -69,6 +70,7 @@ const Body = () => {
 
       <div className="bodyCard">
         {allrestaurant != null ? (
+
           filtredRestaurant.length != 0 ? (
             filtredRestaurant.map((element) => {
               return (
@@ -87,6 +89,7 @@ const Body = () => {
           ) : (
             <NoRestaurant />
           )
+          
         ) : (
           <Shimmer />
         )}
