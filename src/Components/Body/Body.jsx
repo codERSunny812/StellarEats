@@ -33,12 +33,14 @@ const Body = () => {
     try {
       const data = await fetch(URL);
       const json = await data.json();
+      console.log(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants);
       setFiltredRestaurant(
-        json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+        json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
           ?.restaurants
       );
       setAllRestaurant(
-        json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+        json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
           ?.restaurants
       );
       // console.log(allrestaurant);
@@ -49,7 +51,6 @@ const Body = () => {
 
   // status checker
   const isOnline = useOnline();
-
   if (!isOnline)
     return (
       <>
@@ -70,7 +71,6 @@ const Body = () => {
 
       <div className="bodyCard">
         {allrestaurant != null ? (
-
           filtredRestaurant.length != 0 ? (
             filtredRestaurant.map((element) => {
               return (
@@ -89,7 +89,7 @@ const Body = () => {
           ) : (
             <NoRestaurant />
           )
-          
+
         ) : (
           <Shimmer />
         )}
