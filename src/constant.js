@@ -3,10 +3,12 @@ export const imageId =
 
 // export const URL =
 //   "https://www.swiggy.com/mapi/homepage/getCards?lat=26.7877845&lng=80.9677658";
-//lucknow location 
+//lucknow location
 
 export const menuURL =
   "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.7877845&lng=80.9677658&restaurantId=";
 
+// export const URL = "https://www.swiggy.com/mapi/homepage/getCards?lat=27.8546202&lng=79.8886084";
 
-export const URL = "https://www.swiggy.com/mapi/homepage/getCards?lat=27.8546202&lng=79.8886084";
+export const URL =
+  "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=27.8546202&lng=79.8886084&page_type=DESKTOP_WEB_LISTING";
