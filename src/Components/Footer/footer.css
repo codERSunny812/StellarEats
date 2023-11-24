@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap");
 .footer {
   position: relative;
-  /* top: 30px; */
+  top: 30px;
   bottom: 0;
 }
 
@@ -24,10 +24,10 @@
 .part1 img {
   height: 150px;
 }
-
+/* 
 .part2 {
   /* border: 2px solid hotpink; */
-}
+/* } * */
 
 .footerHeading {
   margin-top: 19px;
