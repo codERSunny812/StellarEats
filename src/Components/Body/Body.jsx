@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./body.scss";
 import "./body.css";
 import { URL } from "../../constant";
@@ -10,10 +10,13 @@ import { Link } from "react-router-dom";
 import useOnline from "../../util/useOnline";
 import Anim from "./response.json";
 import Lottie from "lottie-react";
-
+// import UserContext from "../../util/userContext";
 const Body = () => {
   const [filtredRestaurant, setFiltredRestaurant] = useState(null);
   const [allrestaurant, setAllRestaurant] = useState(null);
+
+  // const dataUser = useContext(UserContext)
+  // console.log(dataUser);
   
 
   // search functionalities of the app
@@ -33,17 +36,13 @@ const Body = () => {
     try {
       const data = await fetch(URL);
       const json = await data.json();
-      console.log(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants);
+      console.log(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setFiltredRestaurant(
-        json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
-          ?.restaurants
+        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
       );
       setAllRestaurant(
-        json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
-          ?.restaurants
+        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
       );
-      // console.log(allrestaurant);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -65,6 +64,7 @@ const Body = () => {
 
   return (
     <>
+    <div className="bodyComp">
       <div className="searchCont">
         <SearchBar searchFun={filterRestaurant} />
       </div>
@@ -93,6 +93,7 @@ const Body = () => {
         ) : (
           <Shimmer />
         )}
+      </div>
       </div>
     </>
   );
