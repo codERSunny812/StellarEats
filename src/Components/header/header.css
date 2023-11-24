@@ -33,6 +33,7 @@
   align-items: center;
   justify-content: center;
   text-transform: capitalize;
+  outline:none;
 }
 .header ul li span {
   font-family: "Montserrat", sans-serif !important;
@@ -49,8 +50,14 @@
 }
 
 li:hover {
-  color: orange;
+  color: rgb(255, 72, 0);
 }
+
+/* Remove focus/active state indicator */
+*:focus {
+  outline: none;
+}
+
 /* Media Query for Smaller Screens */
 @media (max-width: 768px) {
   .header {
