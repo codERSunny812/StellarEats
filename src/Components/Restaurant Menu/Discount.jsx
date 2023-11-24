@@ -10,7 +10,7 @@ const Discount = (props) => {
   return (
     <>
       {discountInfo.map((item) => (
-        <div className="discountBox" key={item.id}>
+        <div className="discountBox" key={Math.random()}>
           <BiSolidOffer className="offerIcon" />
           <h5>{item?.meta}</h5>
         </div>
