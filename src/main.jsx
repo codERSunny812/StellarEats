@@ -2,9 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import AppRouter from "./App";
 import { RouterProvider } from "react-router-dom";
+import { ContextProvider } from "./Components/Context/SearchContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={AppRouter} />
-  </React.StrictMode>
+  <>
+  <ContextProvider>
+      <RouterProvider router={AppRouter} />
+  </ContextProvider>
+    
+  </>
 );
