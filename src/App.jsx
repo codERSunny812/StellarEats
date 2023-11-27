@@ -7,18 +7,20 @@ import Error from "./Components/Error/Error";
 import Cart from "./Components/Cart/Cart";
 import Menu from "./Components/Restaurant Menu/Menu";
 import Status from "./Components/Account/Status";
-import { useState } from "react";
 import Offer from "./Components/Offers/Offer";
+import { Provider } from "react-redux";
+import store from "./util/store";
+import './app.css'
 
 function App() {
-  
-
   return (
-    <>
-      <Header />
-      <Outlet />
-      <Footer />
-    </>
+    <Provider store={store}>
+      <div className="mainContainer"> 
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </Provider>
   );
 }
 
