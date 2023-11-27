@@ -3,9 +3,10 @@ import "./Shimmer.css";
 const Shimmer = () => {
   return (
     <div className="bodyCard">
-      {Array(25)
+      {Array(28)
         .fill("")
         .map(() => (
+
           <div className="shimmerCard" key={Math.random()}>
             <div className="img"></div>
             <div className="name"></div>
@@ -18,5 +19,7 @@ const Shimmer = () => {
     </div>
   );
 };
+
+
 
 export default Shimmer;
