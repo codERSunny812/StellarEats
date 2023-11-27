@@ -1,11 +1,11 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap'); */
 .header {
-  /* border: 2px solid black; */
+  /* border: 2px solid darkgoldenrod; */
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  position: fixed;
+  position:sticky;
   top: 0;
   left: 0;
   z-index: 1;
@@ -13,7 +13,7 @@
   height: 12vh;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-  padding: 0 6px;
+  padding: 0 8px;
 }
 .header ul {
   /* border: 2px solid black; */
@@ -23,6 +23,7 @@
   align-items: center;
   text-decoration: none;
   cursor: pointer;
+  padding: 0 8px;
 }
 .header ul li {
   list-style-type: none;
