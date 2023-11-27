@@ -11,28 +11,16 @@ import anim from "./Loading.json";
 import Lottie from "lottie-react";
 import { menuURL } from "../../constant";
 import { FaLeaf } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { addItems} from "../../util/cartSlice"
 
-
-const MenuSection = (props) => {
-  // console.log(props);
+const MoreRestaurantInfo = (props) =>{
   const {items} = props;
-  // console.log(items);
-  const [menuItem,setMenuItems]=useState(items);
-  // console.log(menuItem?.card?.card?.categories[0]);
-  // setMenuItems(menuItem.card.card.categories.itemCards)
   return(
     <>
-   <div className="FullMenuContainer">
-    <div className="title">
-          <h2>{items.card.card.title}</h2> 
-          <hr />
-          <h3></h3>
+  <h2>{items.name}</h2>
+  <h4>{items.price}</h4>
 
-    </div>
-    <div className="menuSectionIcon">
-      +
-    </div>
-   </div>
     </>
   );
 
@@ -40,14 +28,47 @@ const MenuSection = (props) => {
 
 
 
+const MenuSection = (props) => {
+  // console.log(props);
+  const {items} = props;
+  console.log(items.card.card); //✅
+
+  return (
+    
+      items.card.card.title && (
+        <div className="FullMenuContainer">
+          <div className="title">
+            <h2>{items.card.card.title}</h2>
+            <hr />
+          {  
+            items.card.card.itemCard && (Object.values(items.card.card.itemCard).map((element) => {
+              return(
+             <MoreRestaurantInfo  restaInfo={element.card.info} key={element.card.info.id}/>
+              )
+            }))
+           
+          }
+            
+           
+          </div>
+          <div className="menuSectionIcon">+</div>
+        </div>
+      )
+    
+
+  );
+
+}
+
+
+
 const Menu = () => {
+
   //this will give the route url address
-  // console.log(useParams());
   let { id } = useParams();
   // console.log(id);
 
   // state variable to show the data
-
   const [loading, setLoading] = useState(true);
   const [restaurantMenu, setRestaurantMenu] = useState({});
   const [FullMenu,setFullMenu] = useState({});
@@ -71,6 +92,12 @@ const Menu = () => {
       // Handle the error (e.g., show a message to the user)
     }
   };
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = () =>{
+    dispatch(addItems("grapes"));
+  }
 
   return (
     <>
@@ -141,6 +168,8 @@ const Menu = () => {
 
           </div>
 
+          <button onClick={handleAddItem}>add item</button>
+
           <div className="thirdBox">
             
           <div className="topText">
@@ -151,15 +180,10 @@ const Menu = () => {
         {
           FullMenu.map((items)=>{
             return(
-              <MenuSection items={items} key={Math.random()} id={id} />
+              <MenuSection items={items} key={Math.random()} />
             );
           })
         }
-
-
-          {/* <MenuSection  name={"sunny"} about={"im a good boy"}/>
-          <MenuSection   name={"anushka"} about={"she's my jaaneman"}/> */}
-
           </div>
 
           

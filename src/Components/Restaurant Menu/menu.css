@@ -3,22 +3,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&display=swap");
 
 /* Global Styles */
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-html,
-body {
-  height: 100%;
-  width: 100%;
-}
-
 /* Container Styles */
 .menuContainer {
-  margin-top: 120px;
+  /* border: 2px solid red; */
   width: 100%;
+  min-height: calc(100vh-15vh);
 }
 
 .loading {
@@ -28,7 +22,7 @@ body {
 
 /* First Box Styles */
 .firstBox {
-  border: 2px solid gold;
+  /* border: 2px solid gold; */
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -50,7 +44,7 @@ h5,h6 {
 }
 
 .restaurantName h6{
-  border: 2px solid greenyellow;
+  /* border: 2px solid greenyellow; */
   margin-top: 3px;
   font-weight: 200;
   font-size: 15px;
@@ -93,18 +87,18 @@ p {
 
 .secondBox{
   margin: 2% 0;
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 
 .delivarySection{
-  border: 2px solid pink;
+  /* border: 2px solid pink; */
   display: flex;
   gap: 21px;
   margin: 0 2%;
 }
 
 .delivaryTimeString , .delivaryTimeString h6 ,.costOfItem{
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,30 +113,30 @@ p {
 }
 
 .discountSection{
-  border: 2px solid blueviolet;
+  /* border: 2px solid blueviolet; */
   display: flex;
 }
 
 
 .thirdBOx{
-  border: 2px solid firebrick;
+  /* border: 2px solid firebrick; */
 }
 
 .topText{
-  border: 2px solid black;
+  /* border: 2px solid black; */
   display: flex;
   align-items: center;
   text-transform:capitalize;
   padding:4px;
 }
 .topText h4{
-  border: 2px solid darkgoldenrod;
+  /* border: 2px solid darkgoldenrod; */
   margin: 0 4px;
 }
 
 
 .FullMenuContainer{
-  border: 2px solid darkred;
+  /* border: 2px solid darkred; */
   margin: 6px;
   display: flex;
   align-items: center;
