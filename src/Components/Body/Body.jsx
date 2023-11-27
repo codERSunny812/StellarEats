@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./body.scss";
 import "./body.css";
 import { URL } from "../../constant";
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
@@ -10,10 +9,15 @@ import { Link } from "react-router-dom";
 import useOnline from "../../util/useOnline";
 import Anim from "./response.json";
 import Lottie from "lottie-react";
+import { SearchContext } from "../Context/SearchContext";
 // import UserContext from "../../util/userContext";
+
+
 const Body = () => {
+  
   const [filtredRestaurant, setFiltredRestaurant] = useState(null);
   const [allrestaurant, setAllRestaurant] = useState(null);
+  const SearchBarContext = useContext(SearchContext);
 
   // const dataUser = useContext(UserContext)
   // console.log(dataUser);
@@ -30,13 +34,14 @@ const Body = () => {
   // Api call to get the restaurant data
   useEffect(() => {
     getRestaurant();
+    // console.log("re render");
   }, []);
 
   async function getRestaurant() {
     try {
       const data = await fetch(URL);
       const json = await data.json();
-      console.log(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      // console.log(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setFiltredRestaurant(
         json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
       );
@@ -50,7 +55,8 @@ const Body = () => {
 
   // status checker
   const isOnline = useOnline();
-  if (!isOnline)
+
+  if (!isOnline){
     return (
       <>
         <div className="NoInterNetContainer">
@@ -59,15 +65,22 @@ const Body = () => {
         </div>
       </>
     );
+  }
+  
 
 
 
   return (
     <>
     <div className="bodyComp">
-      <div className="searchCont">
-        <SearchBar searchFun={filterRestaurant} />
-      </div>
+
+        {SearchBarContext.isSearchVisible && (
+          <div className="searchCont">
+            <SearchBar searchFun={filterRestaurant} />
+          </div>
+        ) 
+        }
+     
 
       <div className="bodyCard">
         {allrestaurant != null ? (
@@ -94,6 +107,7 @@ const Body = () => {
           <Shimmer />
         )}
       </div>
+
       </div>
     </>
   );
