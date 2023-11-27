@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./signUp.css";
 import signUpAnim from "./signUp.json";
 import Lottie from "lottie-react";
@@ -7,13 +7,40 @@ import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { BsTwitter } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
+import {getAuth,createUserWithEmailAndPassword}  from 'firebase/auth'
+import {app} from '../../../../fireBaseConfig'
+
+// create instance of app 
+const auth = getAuth(app);
+
 
 const SignUp = ({ onsucessFullSignUp }) => {
-  //funciton
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleState = () => {
-    onsucessFullSignUp();
-  };
+  //funciton
+   const MainFunction = () => {
+     const handleState = () => {
+       onsucessFullSignUp();
+     };
+
+     const createUser = createUserWithEmailAndPassword(auth, email, password)
+     .then((userCredential)=>{
+      const user = userCredential.user;
+      console.log(user);
+     })
+     .catch((err)=>{
+       const errorCode = err.code;
+       const errorMessage = err.message;
+       console.log(errorCode+ " " + errorMessage);
+     })
+
+     handleState();
+     
+
+   }
+
+ 
   return (
     <>
       <div className="loginContainer">
@@ -28,21 +55,23 @@ const SignUp = ({ onsucessFullSignUp }) => {
             <div className="signUpData">
               <div className="signUpName">
                 <FaUser />
-                <input type="text" placeholder="your name" />
+                <input type="text" placeholder="your name" id="name"/>
               </div>
               <div className="signUpEmail">
                 <MdEmail />
-                <input type="email" placeholder="enter your email" />
+                <input type="email" placeholder="enter your email"  id="email" onChange={e=> setEmail(e.target.value)}
+                value={email}/>
               </div>
               <div className="signUpPassWord">
                 <RiLockPasswordFill />
-                <input type="password" placeholder=" enter your password" />
+                <input type="password" placeholder=" enter your password" id="password" onChange={e => setPassword(e.target.value)}
+                  value={password} />
               </div>
 
               <button
                 type="submit"
                 className="signUpButton"
-                onClick={handleState}
+                onClick={MainFunction}
               >
                 sign up
               </button>

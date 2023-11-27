@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "./signin.css";
 import signinAnim from "./signIn.json";
 import Lottie from "lottie-react";
@@ -6,8 +6,35 @@ import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { BsTwitter } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
+import {getAuth,signInWithEmailAndPassword} from 'firebase/auth'
+import {app} from '../../../../fireBaseConfig'
+
+
+// create an instance of the app
+const auth = getAuth(app);
+
+
 
 const SignIn = (props) => {
+
+   const[email,setEmail] = useState("");
+   const[password,setPassword] = useState("");
+
+   const signInUser = () =>{
+    signInWithEmailAndPassword(auth,email,password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((err) => {
+        const errorCode = err.code;
+        const errorMessage = err.message;
+        console.log(errorCode + " " + errorMessage);
+      })
+   };
+
+
+
   console.log(props);
   return (
     <>
@@ -23,14 +50,14 @@ const SignIn = (props) => {
             <div className="signinData">
               <div className="signinEmail">
                 <MdEmail />
-                <input type="email" placeholder="enter your email" />
+                <input type="email" placeholder="enter your email"  id="email" onChange={e=>setEmail(e.target.value)} value={email}/>
               </div>
               <div className="signinPassWord">
                 <RiLockPasswordFill />
-                <input type="password" placeholder=" enter your password" />
+                <input type="password" placeholder=" enter your password" id="password" onChange={e => setPassword(e.target.value)} value={password} />
               </div>
 
-              <button type="submit" className="signinButton">
+              <button type="submit" className="signinButton" id="btn" onClick={signInUser}>
                 sign in
               </button>
             </div>
