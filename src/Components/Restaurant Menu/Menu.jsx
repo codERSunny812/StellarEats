@@ -11,50 +11,81 @@ import anim from "./Loading.json";
 import Lottie from "lottie-react";
 import { menuURL } from "../../constant";
 import { FaLeaf } from "react-icons/fa6";
-import { useDispatch } from "react-redux";
-import { addItems} from "../../util/cartSlice"
+import { FaArrowUp } from "react-icons/fa";
 
-const MoreRestaurantInfo = (props) =>{
-  const {items} = props;
-  return(
-    <>
-  <h2>{items.name}</h2>
-  <h4>{items.price}</h4>
 
-    </>
-  );
+const MenuRestInfo = (props) =>{
+  // console.log(props.items);
+  // console.log(props);
+  return props?.state ?  (
+    <div className="menuRestInfo">
+      <div className="menuRestInfoCont">
 
+        <div className="aboutFood">
+          <h2>{props?.items?.name}</h2>
+          <p>{props?.items?.description}</p>
+        </div>
+        <div className="foodImage">
+          <img src={imageId + props?.items?.imageId} alt="food image" />
+        </div>
+        
+      </div>
+    </div>
+  ) : null
+  
+  
 }
 
-
+// section for menu 
 
 const MenuSection = (props) => {
-  // console.log(props);
-  const {items} = props;
-  console.log(items.card.card); //✅
+  console.log(props);
 
+  const [toggleMenu,setMenu] = useState(true);
+
+
+  const handleMenuState = () =>{
+    if(toggleMenu){
+    setMenu(false);
+    }else{
+      setMenu(true);
+    }
+    
+  }
+  
+  
+  const {items} = props;
+  // console.log(items);
+  // console.log(items.itemCards);
   return (
     
-      items.card.card.title && (
+      items?.itemCards && (
         <div className="FullMenuContainer">
           <div className="title">
-            <h2>{items.card.card.title}</h2>
-            <hr />
-          {  
-            items.card.card.itemCard && (Object.values(items.card.card.itemCard).map((element) => {
-              return(
-             <MoreRestaurantInfo  restaInfo={element.card.info} key={element.card.info.id}/>
-              )
-            }))
-           
-          }
+            <div className="titleOfMenu">
+            <h2>{items?.title}</h2>
+            <div className="collapseIcon" onClick={handleMenuState}>
+              <span style={{ color: 'black' }}>
+                <FaArrowUp />
+              </span>
+              
+            </div>
+            </div>
+            <div className="breakContainer"></div>
             
-           
+            {/* //call the api for more menu section */}
+            {
+           items?.itemCards?.map((list)=>{
+            return(
+              <MenuRestInfo items={list?.card?.info} state={toggleMenu}/>
+            )
+           })
+            }
+            
           </div>
-          <div className="menuSectionIcon">+</div>
         </div>
       )
-    
+  
 
   );
 
@@ -69,6 +100,8 @@ const Menu = () => {
   // console.log(id);
 
   // state variable to show the data
+
+  // state variable to show the animation unitl the restaurant is loaded 
   const [loading, setLoading] = useState(true);
   const [restaurantMenu, setRestaurantMenu] = useState({});
   const [FullMenu,setFullMenu] = useState({});
@@ -80,24 +113,16 @@ const Menu = () => {
   const getRestaurantMenu = async () => {
     try {
       const menuData = await fetch(`${menuURL}/${id}`);
-      const menuJson = await menuData.json();
+      const menuJson = await menuData?.json();
       // console.log(menuJson.data.cards[3].groupedCard.cardGroupMap.REGULAR.cards);
-      setRestaurantMenu(menuJson?.data?.cards[0]?.card?.card.info);
-      setFullMenu(menuJson.data.cards[3].groupedCard.cardGroupMap.REGULAR.cards)
+      setRestaurantMenu(menuJson?.data?.cards[0]?.card?.card?.info);
+      setFullMenu(menuJson?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
       setLoading(false);
     } 
     catch (error) {
       console.error("Error fetching restaurant menu:", error);
-      // setLoading(false);
-      // Handle the error (e.g., show a message to the user)
     }
   };
-
-  const dispatch = useDispatch();
-
-  const handleAddItem = () =>{
-    dispatch(addItems("grapes"));
-  }
 
   return (
     <>
@@ -108,8 +133,8 @@ const Menu = () => {
           {/* first box for restaurant info */}
           <div className="firstBox">
             <div className="restaurantName">
-              <h2>{restaurantMenu.name}</h2>
-              <h4>{restaurantMenu.cuisines.join(" , ")}</h4>
+              <h2>{restaurantMenu?.name}</h2>
+              <h4>{restaurantMenu?.cuisines?.join(" , ")}</h4>
                 <h5>{restaurantMenu?.areaName +" | "+ restaurantMenu?.sla?.lastMileTravelString}</h5>
               <h6 className="message">
                   <IoBicycle color="black" className="icon" />
@@ -120,10 +145,10 @@ const Menu = () => {
             <div className="rating">
               <div className="avgRating">
                 <AiFillStar color="green" />
-                <h4>{restaurantMenu.avgRating}</h4>
+                <h4>{restaurantMenu?.avgRating}</h4>
               </div>
               <hr className="line" />
-              <h5>{restaurantMenu.totalRatingsString}</h5>
+              <h5>{restaurantMenu?.totalRatingsString}</h5>
             </div>
           </div>
 
@@ -157,7 +182,7 @@ const Menu = () => {
                   0 ? (
                   <Discount
                     discountInfo={
-                      restaurantMenu.aggregatedDiscountInfo.descriptionList
+                      restaurantMenu?.aggregatedDiscountInfo?.descriptionList
                     }
                   />
                 ) : (
@@ -168,7 +193,7 @@ const Menu = () => {
 
           </div>
 
-          <button onClick={handleAddItem}>add item</button>
+       
 
           <div className="thirdBox">
             
@@ -180,15 +205,11 @@ const Menu = () => {
         {
           FullMenu.map((items)=>{
             return(
-              <MenuSection items={items} key={Math.random()} />
+              <MenuSection items={items?.card?.card} key={Math.random()} />
             );
           })
         }
           </div>
-
-          
-         
-        
         </div>
       )}
     </>

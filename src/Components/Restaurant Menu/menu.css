@@ -141,6 +141,54 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 5px;
+}
+
+.title{
+  /* border: 2px solid forestgreen; */
+  width: 100;
+}
+
+.menuRestInfo{
+/* border: 2px solid black; */
+padding: 5px;
+margin: 10px;
+}
+
+.menuRestInfoCont{
+  /* border: 2px solid forestgreen; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.aboutFood{
+  /* border: 2px solid goldenrod; */
+}
+
+.foodImage img{
+  /* border: 2px solid fuchsia; */
+  height: 120px;
+  width: 120px;
+  border-radius: 12px;
+}
+
+.titleOfMenu{
+  /* border:2px solid blue; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.collapseIcon{
+  /* border: 2px solid goldenrod; */
+  color:black;
+}
+
+.breakContainer{
+  height: 12px;
+  width: 100%;
+  margin: 10px 0;
+  background-color: rgba(128, 128, 128, 0.452);
+  border-radius: 2px;
 }
 /* Media Query for Screens with a Maximum Width of 768px */
 @media (max-width: 768px) {
