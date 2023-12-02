@@ -10,18 +10,14 @@ import useOnline from "../../util/useOnline";
 import Anim from "./response.json";
 import Lottie from "lottie-react";
 import { SearchContext } from "../Context/SearchContext";
-// import UserContext from "../../util/userContext";
 
 
 const Body = () => {
-  
   const [filtredRestaurant, setFiltredRestaurant] = useState(null);
   const [allrestaurant, setAllRestaurant] = useState(null);
   const SearchBarContext = useContext(SearchContext);
 
-  // const dataUser = useContext(UserContext)
-  // console.log(dataUser);
-  
+ 
 
   // search functionalities of the app
   const filterRestaurant = (searchTerm) => {
@@ -40,13 +36,15 @@ const Body = () => {
   async function getRestaurant() {
     try {
       const data = await fetch(URL);
-      const json = await data.json();
+      const json = await data?.json();
       // console.log(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setFiltredRestaurant(
-        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
       );
       setAllRestaurant(
-        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
       );
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -56,7 +54,7 @@ const Body = () => {
   // status checker
   const isOnline = useOnline();
 
-  if (!isOnline){
+  if (!isOnline) {
     return (
       <>
         <div className="NoInterNetContainer">
@@ -66,48 +64,40 @@ const Body = () => {
       </>
     );
   }
-  
-
-
 
   return (
     <>
-    <div className="bodyComp">
-
-        {SearchBarContext.isSearchVisible && (
+      <div className="bodyComp">
+        {SearchBarContext?.isSearchVisible && (
           <div className="searchCont">
             <SearchBar searchFun={filterRestaurant} />
           </div>
-        ) 
-        }
-     
-
-      <div className="bodyCard">
-        {allrestaurant != null ? (
-          filtredRestaurant.length != 0 ? (
-            filtredRestaurant.map((element) => {
-              return (
-                <Link
-                  to={"/restaurant/" + element.info.id}
-                  key={element.info.id}
-                  className="link"
-                >
-                  <RestaurantCard
-                    card={element.info}
-                    delivaryInfo={element.info.sla}
-                  />
-                </Link>
-              );
-            })
-          ) : (
-            <NoRestaurant />
-          )
-
-        ) : (
-          <Shimmer />
         )}
-      </div>
 
+        <div className="bodyCard">
+          {allrestaurant != null ? (
+            filtredRestaurant.length != 0 ? (
+              filtredRestaurant.map((element) => {
+                return (
+                  <Link
+                    to={"/restaurant/" + element?.info?.id}
+                    key={element?.info?.id}
+                    className="link"
+                  >
+                    <RestaurantCard
+                      card={element?.info}
+                      delivaryInfo={element?.info?.sla}
+                    />
+                  </Link>
+                );
+              })
+            ) : (
+              <NoRestaurant />
+            )
+          ) : (
+            <Shimmer />
+          )}
+        </div>
       </div>
     </>
   );
