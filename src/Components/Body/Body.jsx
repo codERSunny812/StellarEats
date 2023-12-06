@@ -10,14 +10,17 @@ import useOnline from "../../util/useOnline";
 import Anim from "./response.json";
 import Lottie from "lottie-react";
 import { SearchContext } from "../Context/SearchContext";
-
+import { useDispatch } from "react-redux";
+import { addItems } from "../../util/cartSlice";
 
 const Body = () => {
+  // state variable
   const [filtredRestaurant, setFiltredRestaurant] = useState(null);
   const [allrestaurant, setAllRestaurant] = useState(null);
   const SearchBarContext = useContext(SearchContext);
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
 
- 
 
   // search functionalities of the app
   const filterRestaurant = (searchTerm) => {
@@ -29,29 +32,64 @@ const Body = () => {
 
   // Api call to get the restaurant data
   useEffect(() => {
-    getRestaurant();
-    // console.log("re render");
+    fetchData();
   }, []);
 
+
+  // api calling function
+  const fetchData = async () => {
+    try {
+      // await getLocationInfo();
+      await getRestaurant();
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  // function to get longitude and latitude of user's location
+  // const getLocationInfo = () => {
+  //   navigator.geolocation.getCurrentPosition((position) => {
+  //     const lat = position.coords.latitude;
+  //     const long = position.coords.longitude;
+  //     setLatitude(lat);
+  //     setLongitude(long);
+  //     console.log("the longitude of the my place is :" + long);
+  //     console.log("the latitide of the my place is :" + lat);
+  //   });
+  // };
+
+  // restaurant data fetching
   async function getRestaurant() {
     try {
       const data = await fetch(URL);
+      // const data = await fetch(
+      //   `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&page_type=DESKTOP_WEB_LISTING`
+      // );
       const json = await data?.json();
-      // console.log(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-      setFiltredRestaurant(
-        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-      setAllRestaurant(
-        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
+      console.log(json?.data?.success?.cards[4].gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants);
+      // console.log(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      // setFiltredRestaurant(
+      //   json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+      //     ?.restaurants
+      // );
+      // setAllRestaurant(
+      //   json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+      //     ?.restaurants
+      // );
+
+      setAllRestaurant(json?.data?.success?.cards[4].gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants)
+      setFiltredRestaurant(json?.data?.success?.cards[4].gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants)
+
+
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }
 
-  // status checker
+  // net connnectivity  checker hook
   const isOnline = useOnline();
 
   if (!isOnline) {
@@ -65,8 +103,11 @@ const Body = () => {
     );
   }
 
+ 
   return (
     <>
+
+      {/* Search bar component     */}
       <div className="bodyComp">
         {SearchBarContext?.isSearchVisible && (
           <div className="searchCont">
@@ -74,6 +115,8 @@ const Body = () => {
           </div>
         )}
 
+
+        {/* card component */}
         <div className="bodyCard">
           {allrestaurant != null ? (
             filtredRestaurant.length != 0 ? (
