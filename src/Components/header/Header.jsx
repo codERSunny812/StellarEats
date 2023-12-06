@@ -7,8 +7,8 @@ import { BiUserCircle } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Store from "../../util/store";
 import { SearchContext } from "../Context/SearchContext";
+import store from "../../util/store";
 
 
 const Logo = () => {
@@ -25,9 +25,10 @@ const Logo = () => {
 
 const Header = () => {
   
-// subscribing to  our store
-const cartItem = useSelector(Store => Store.cart.items);
+
 const SearchCont = useContext(SearchContext);
+
+  const CartItems = useSelector((store) => store.cart.items)
 
   const SearchToggleFun = () =>{
     
@@ -66,7 +67,8 @@ const SearchCont = useContext(SearchContext);
           <Link to="/cart" className="link">
             <li>
               <AiOutlineShoppingCart />
-              <span>cart {cartItem.length}</span>
+              {/* <sup className="onMobile">{CartItems.length}</sup> */}
+              <span>cart<sup className="countOfItems">{CartItems.length}</sup> </span>
             </li>
           </Link>
         </ul>
