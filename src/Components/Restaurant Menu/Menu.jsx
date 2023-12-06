@@ -13,7 +13,7 @@ import { menuURL } from "../../constant";
 import { FaArrowDown, FaLeaf } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { addItems } from "../../util/cartSlice";
+import { addItems } from "../../util/CartSlice";
 
 
 
