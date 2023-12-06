@@ -10,40 +10,56 @@ import Discount from "./Discount";
 import anim from "./Loading.json";
 import Lottie from "lottie-react";
 import { menuURL } from "../../constant";
-import { FaLeaf } from "react-icons/fa6";
+import { FaArrowDown, FaLeaf } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addItems } from "../../util/cartSlice";
+
+
+
+
+
 
 
 const MenuRestInfo = (props) =>{
   // console.log(props.items);
   // console.log(props);
-  return props?.state ?  (
-    <div className="menuRestInfo">
-      <div className="menuRestInfoCont">
+  const dispatch = useDispatch();
 
+  const addTheItem = (props) => {
+    dispatch(addItems(props));
+  }
+  return props?.state ?  (
+    (props?.items?.imageId) && <div className="menuRestInfo">
+      <div className="menuRestInfoCont">
         <div className="aboutFood">
           <h2>{props?.items?.name}</h2>
           <p>{props?.items?.description}</p>
         </div>
         <div className="foodImage">
           <img src={imageId + props?.items?.imageId} alt="food image" />
+          <div className="btnAdd">
+            <button className="addBtn" onClick={()=>{addTheItem(props.items)}}>add +</button>
+          </div>
+
         </div>
-        
+
+
       </div>
     </div>
+   
   ) : null
   
   
 }
 
 // section for menu 
-
 const MenuSection = (props) => {
-  console.log(props);
+  // console.log(props);
 
   const [toggleMenu,setMenu] = useState(true);
 
-
+  // handle the toggle of the menu bar 
   const handleMenuState = () =>{
     if(toggleMenu){
     setMenu(false);
@@ -66,7 +82,10 @@ const MenuSection = (props) => {
             <h2>{items?.title}</h2>
             <div className="collapseIcon" onClick={handleMenuState}>
               <span style={{ color: 'black' }}>
-                <FaArrowUp />
+                {
+                  toggleMenu ? (<FaArrowUp />) : (<FaArrowDown />)
+                }
+               
               </span>
               
             </div>
@@ -77,7 +96,7 @@ const MenuSection = (props) => {
             {
            items?.itemCards?.map((list)=>{
             return(
-              <MenuRestInfo items={list?.card?.info} state={toggleMenu}/>
+              <MenuRestInfo items={list?.card?.info} state={toggleMenu} key={list?.card?.info?.id}/>
             )
            })
             }
@@ -92,28 +111,28 @@ const MenuSection = (props) => {
 }
 
 
-
+// menu of the any restaurant 
 const Menu = () => {
 
   //this will give the route url address
   let { id } = useParams();
   // console.log(id);
 
-  // state variable to show the data
-
-  // state variable to show the animation unitl the restaurant is loaded 
   const [loading, setLoading] = useState(true);
   const [restaurantMenu, setRestaurantMenu] = useState({});
   const [FullMenu,setFullMenu] = useState({});
-
+ 
+  // hook to call the restaurant menu
   useEffect(() => {
     getRestaurantMenu();
   }, []);
 
   const getRestaurantMenu = async () => {
     try {
-      const menuData = await fetch(`${menuURL}/${id}`);
+      // const menuData = await fetch(`${menuURL}${id}`);
+      const menuData = await fetch(`https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.7877845&lng=80.9677658&restaurantId=${id}`)
       const menuJson = await menuData?.json();
+      // console.log(menuJson);
       // console.log(menuJson.data.cards[3].groupedCard.cardGroupMap.REGULAR.cards);
       setRestaurantMenu(menuJson?.data?.cards[0]?.card?.card?.info);
       setFullMenu(menuJson?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
@@ -130,7 +149,7 @@ const Menu = () => {
         <Lottie animationData={anim} className="loading" />
       ) : (
         <div className="menuContainer">
-          {/* first box for restaurant info */}
+          {/* restaurant information */}
           <div className="firstBox">
             <div className="restaurantName">
               <h2>{restaurantMenu?.name}</h2>
@@ -152,9 +171,11 @@ const Menu = () => {
             </div>
           </div>
 
-          <div className="secondBox">
-           {/* delivary time section */}
 
+
+          {/* delivary and discount  of all  restaurant  */}
+          <div className="secondBox">
+        
            <div className="delivarySection">
 
             <div className="delivaryTimeString">
@@ -195,6 +216,7 @@ const Menu = () => {
 
        
 
+            {/* menu of the restaurant  */}
           <div className="thirdBox">
             
           <div className="topText">

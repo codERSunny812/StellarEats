@@ -1,6 +1,8 @@
 /* Font Imports */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 /* Global Styles */
 *{
@@ -117,10 +119,10 @@ p {
   display: flex;
 }
 
-
+/* 
 .thirdBOx{
-  /* border: 2px solid firebrick; */
-}
+  border: 2px solid firebrick;
+} */
 
 .topText{
   /* border: 2px solid black; */
@@ -144,9 +146,9 @@ p {
   padding: 5px;
 }
 
-.title{`
+.title{
   /* border: 2px solid forestgreen; */
-  width: 100;
+  width: 100%;
 }
 
 .menuRestInfo{
@@ -161,9 +163,48 @@ margin: 10px;
   align-items: center;
   justify-content: space-between;
 }
-.aboutFood{
-  /* border: 2px solid goldenrod; */
+.aboutFood h2{
+ font-family: 'Roboto', sans-serif;
 }
+
+
+.aboutFood p{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+}
+
+.foodImage{
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.foodImage button{
+  align-items: center;
+  padding: 5px 15px;
+  text-transform: uppercase;
+  background-color: white;
+  color: greenyellow;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  outline: none;
+  border: 1.6px solid gray;
+  cursor: pointer;
+  /* width: 100%; */
+}
+
+.foodImage button:hover{
+box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+border: none;
+}
+
+.btnAdd{
+  /* border: 2px solid hotpink; */
+  position:relative;
+  top: 5%;
+}
+
 
 .foodImage img{
   /* border: 2px solid fuchsia; */
@@ -202,5 +243,25 @@ margin: 10px;
   }
 .restaurantName h6{
   font: 27px;
+}
+.foodImage img{
+  /* border: 2px solid fuchsia; */
+  height: 80px;
+  width: 80px;
+  border-radius: 12px;
+}
+.menuRestInfoCont{
+  /* border: 2px solid firebrick; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.aboutFood{
+  /* border:2px solid forestgreen; */
+  width: 100%;
+  margin: 2px;
+  padding: 2px;
 }
 }
