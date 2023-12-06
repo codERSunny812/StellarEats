@@ -1,0 +1,14 @@
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBVgqpvgruTIrjmdNcF7_88PpPJ92QSteU",
+    authDomain: "foodapp-e55a3.firebaseapp.com",
+    projectId: "foodapp-e55a3",
+    storageBucket: "foodapp-e55a3.appspot.com",
+    messagingSenderId: "1030901474274",
+    appId: "1:1030901474274:web:3d02058ba8f52000b38fbb",
+    measurementId: "G-JDZ7STYQTZ"
+};
+
+
+export const app = initializeApp(firebaseConfig);
