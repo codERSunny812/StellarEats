@@ -11,7 +11,7 @@ import Anim from "./response.json";
 import Lottie from "lottie-react";
 import { SearchContext } from "../Context/SearchContext";
 import { useDispatch } from "react-redux";
-import { addItems } from "../../util/cartSlice";
+import { addItems } from "../../util/CartSlice";
 
 const Body = () => {
   // state variable
