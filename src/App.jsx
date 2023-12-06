@@ -14,13 +14,16 @@ import './app.css'
 
 function App() {
   return (
-    <Provider store={store}>
+
+    // connect our store with our app
+  <Provider store={store}>
       <div className="mainContainer"> 
         <Header />
         <Outlet />
         <Footer />
       </div>
     </Provider>
+
   );
 }
 
