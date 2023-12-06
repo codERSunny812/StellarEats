@@ -90,7 +90,9 @@
     justify-content: center;
   }
   .part1 img {
-    height: 80px;
+    /* border: 2px solid red; */
+    height: 50px;
+    width: fit-content;
   }
   .part2 {
     /* border: 2px solid lawngreen; */
