@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+* {
+  font-family: "Roboto", sans-serif;
+}
+.card {
+  width: 250px;
+  background-color: #fff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.card > img {
+  width: 100%;
+  height: 200px;
+  border-radius: 9px;
+}
+
+.card h2 {
+  font-size: 19px;
+}
+
+.card h3 {
+  font-weight: 100;
+}
+
+.card:hover {
+  border: 0.5px solid black;
+  transform: scale(0.88, 0.88);
+  /* transform: scaleX(0.86); */
+}
+
+.newCont,
+.Cardrating {
+  /* border: 2px solid royalblue; */
+  display: flex;
+  /* /* justify-content: center; */
+  align-items: center;
+}
+
+.newCont h4,
+h5 {
+  /* border: 2px solid firebrick; */
+  font-weight: 600;
+  font-size: 15px;
+  padding: 3px;
+}
+
+.delivaryTime,
+.delivaryTime span {
+  /* border: 2px solid forestgreen; */
+  text-align: center;
+  padding: 0 2px;
+}
+
+.Cardrating {
+  /* border: 2px solid black; */
+  background-color: green;
+  color: white;
+  padding: 1.4px 6px;
+  border-radius: 12px;
+}
+
+.Cardrating h4 {
+  padding: 0 3px;
+}
