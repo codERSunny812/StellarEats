@@ -1,0 +1,50 @@
+ .bodyComp{
+  /* border: 2px solid red; */
+ min-height:calc(100vh-15vh);
+ } 
+
+ .searchCont {
+  /* border: 2px solid red; */
+  margin: 20px 0;
+}
+.bodyCard {
+  /* border: 2px solid royalblue; */
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin: 2px 0;
+}
+
+
+
+.NoInterNetContainer {
+  /* border: 2px solid black; */
+  /* margin-top: 120px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.NoInterNetContainer h3 {
+  /* border: 2px solid red; */
+  text-align: center;
+  text-transform: capitalize;
+  font-family: monospace;
+  letter-spacing: 2px;
+}
+
+.isOnlineAnim {
+  height: 400px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .searchCont {
+    display: flex;
+    justify-content: center;
+  }
+}
