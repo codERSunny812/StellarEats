@@ -1,0 +1,267 @@
+/* Font Imports */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Global Styles */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Container Styles */
+.menuContainer {
+  /* border: 2px solid red; */
+  width: 100%;
+  min-height: calc(100vh-15vh);
+}
+
+.loading {
+  margin-top: 120px;
+  height: 200px;
+}
+
+/* First Box Styles */
+.firstBox {
+  /* border: 2px solid gold; */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+}
+
+/* Restaurant Name Styles */
+.restaurantName {
+  font-family: "Open Sans", sans-serif;
+}
+
+.restaurantName h2 {
+  font-family: "Open Sans", sans-serif;
+}
+
+.restaurantName h4,
+h5,h6 {
+  font-family: "Barlow", sans-serif;
+}
+
+.restaurantName h6{
+  /* border: 2px solid greenyellow; */
+  margin-top: 3px;
+  font-weight: 200;
+  font-size: 15px;
+  
+}
+
+/* Rating Styles */
+.rating {
+  text-align: center;
+  border: 1px solid rgb(1, 1, 1);
+  border-radius: 11px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.avgRating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.avgRating p,
+p {
+  font-family: "Barlow", sans-serif;
+}
+
+.message > .icon {
+  text-align: center;
+  margin: auto;
+}
+
+.line {
+  margin-left: 6px;
+  margin-right: 6px;
+  font-weight: 600;
+}
+
+
+.secondBox{
+  margin: 2% 0;
+  /* border: 2px solid black; */
+}
+
+.delivarySection{
+  /* border: 2px solid pink; */
+  display: flex;
+  gap: 21px;
+  margin: 0 2%;
+}
+
+.delivaryTimeString , .delivaryTimeString h6 ,.costOfItem{
+  /* border: 2px solid blue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+}
+
+.delivarySectionIcon{
+  height: 30px;
+  width: 23px;
+}
+
+.discountSection{
+  /* border: 2px solid blueviolet; */
+  display: flex;
+}
+
+/* 
+.thirdBOx{
+  border: 2px solid firebrick;
+} */
+
+.topText{
+  /* border: 2px solid black; */
+  display: flex;
+  align-items: center;
+  text-transform:capitalize;
+  padding:4px;
+}
+.topText h4{
+  /* border: 2px solid darkgoldenrod; */
+  margin: 0 4px;
+}
+
+
+.FullMenuContainer{
+  /* border: 2px solid darkred; */
+  margin: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.title{
+  /* border: 2px solid forestgreen; */
+  width: 100%;
+}
+
+.menuRestInfo{
+/* border: 2px solid black; */
+padding: 5px;
+margin: 10px;
+}
+
+.menuRestInfoCont{
+  /* border: 2px solid forestgreen; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.aboutFood h2{
+ font-family: 'Roboto', sans-serif;
+}
+
+
+.aboutFood p{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+}
+
+.foodImage{
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.foodImage button{
+  align-items: center;
+  padding: 5px 15px;
+  text-transform: uppercase;
+  background-color: white;
+  color: greenyellow;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  outline: none;
+  border: 1.6px solid gray;
+  cursor: pointer;
+  /* width: 100%; */
+}
+
+.foodImage button:hover{
+box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+border: none;
+}
+
+.btnAdd{
+  /* border: 2px solid hotpink; */
+  position:relative;
+  top: 5%;
+}
+
+
+.foodImage img{
+  /* border: 2px solid fuchsia; */
+  height: 120px;
+  width: 120px;
+  border-radius: 12px;
+}
+
+.titleOfMenu{
+  /* border:2px solid blue; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.collapseIcon{
+  /* border: 2px solid goldenrod; */
+  color:black;
+}
+
+.breakContainer{
+  height: 12px;
+  width: 100%;
+  margin: 10px 0;
+  background-color: rgba(128, 128, 128, 0.452);
+  border-radius: 2px;
+}
+/* Media Query for Screens with a Maximum Width of 768px */
+@media (max-width: 768px) {
+  .restaurantName {
+    font-size: 8px;
+  }
+
+  .secondBox {
+    /* width: fit-content; */
+    width: 100%;
+  }
+.restaurantName h6{
+  font: 27px;
+}
+.foodImage img{
+  /* border: 2px solid fuchsia; */
+  height: 80px;
+  width: 80px;
+  border-radius: 12px;
+}
+.menuRestInfoCont{
+  /* border: 2px solid firebrick; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.aboutFood{
+  /* border:2px solid forestgreen; */
+  width: 100%;
+  margin: 2px;
+  padding: 2px;
+}
+}
