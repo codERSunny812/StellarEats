@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300&family=Red+Hat+Display:wght@500&display=swap");
+
+.container {
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  /* border: 2px solid green; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text h1 {
+  padding-top: 10%;
+  text-transform: capitalize;
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 800;
+}
+
+.text p {
+  font-family: "Playpen Sans", cursive;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .anim {
+    height: 110px;
+  }
+  h1 {
+    font-size: 14px;
+  }
+  p {
+    font-size: 10px;
+  }
+}
