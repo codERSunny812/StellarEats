@@ -21,11 +21,10 @@ const Body = () => {
   // const [latitude, setLatitude] = useState(0);
   // const [longitude, setLongitude] = useState(0);
 
-
   // search functionalities of the app
   const filterRestaurant = (searchTerm) => {
-    const searchedRestaurant = allrestaurant.filter((ele) =>
-      ele.info.name.toLowerCase().includes(searchTerm.toLowerCase())
+    const searchedRestaurant = allrestaurant?.filter((ele) =>
+      ele?.info?.name?.toLowerCase()?.includes(searchTerm?.toLowerCase())
     );
     setFiltredRestaurant(searchedRestaurant);
   };
@@ -34,7 +33,6 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
 
   // api calling function
   const fetchData = async () => {
@@ -59,14 +57,16 @@ const Body = () => {
   // };
 
   // restaurant data fetching
+
   async function getRestaurant() {
     try {
       const data = await fetch(URL);
       // const data = await fetch(
       //   `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&page_type=DESKTOP_WEB_LISTING`
       // );
+      // console.log(data);
       const json = await data?.json();
-      console.log(json.data.success.cards);
+      console.log(json?.data?.success?.cards);
       // console.log(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       // setFiltredRestaurant(
       //   json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
@@ -77,12 +77,14 @@ const Body = () => {
       //     ?.restaurants
       // );
 
-      setAllRestaurant(json?.data?.success?.cards[3].gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants)
-      setFiltredRestaurant(json?.data?.success?.cards[3].gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants)
-
-
+      setAllRestaurant(
+        json?.data?.success?.cards[4].gridWidget?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setFiltredRestaurant(
+        json?.data?.success?.cards[4].gridWidget?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -102,10 +104,8 @@ const Body = () => {
     );
   }
 
- 
   return (
     <>
-
       {/* Search bar component     */}
       <div className="bodyComp">
         {SearchBarContext?.isSearchVisible && (
@@ -114,12 +114,11 @@ const Body = () => {
           </div>
         )}
 
-
         {/* card component */}
         <div className="bodyCard">
           {allrestaurant != null ? (
-            filtredRestaurant.length != 0 ? (
-              filtredRestaurant.map((element) => {
+            filtredRestaurant?.length != 0 ? (
+              filtredRestaurant?.map((element) => {
                 return (
                   <Link
                     to={"/restaurant/" + element?.info?.id}
