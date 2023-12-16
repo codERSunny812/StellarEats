@@ -132,10 +132,10 @@ const Menu = () => {
       // const menuData = await fetch(`${menuURL}${id}`);
       const menuData = await fetch(`https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.7877845&lng=80.9677658&restaurantId=${id}`)
       const menuJson = await menuData?.json();
-      // console.log(menuJson);
+      console.log(menuJson);
       // console.log(menuJson.data.cards[3].groupedCard.cardGroupMap.REGULAR.cards);
-      setRestaurantMenu(menuJson?.data?.cards[0]?.card?.card?.info);
-      setFullMenu(menuJson?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
+      setRestaurantMenu(menuJson?.data?.cards[2]?.card?.card?.info);
+      setFullMenu(menuJson?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
       setLoading(false);
     } 
     catch (error) {
