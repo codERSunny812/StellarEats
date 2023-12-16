@@ -35,3 +35,5 @@ notes.txt
  .DS_Store
  .eslintrc.cjs
  .vscode/
+
+ node_modules
