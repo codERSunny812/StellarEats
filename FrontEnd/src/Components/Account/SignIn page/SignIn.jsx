@@ -6,8 +6,9 @@ import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { BsTwitter } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
-import {getAuth,signInWithEmailAndPassword} from 'firebase/auth'
+import {getAuth,onAuthStateChanged,signInWithEmailAndPassword} from 'firebase/auth'
 import {app} from '../../../../fireBaseConfig'
+import { useNavigate } from "react-router-dom";
 
 
 // create an instance of the app
@@ -19,23 +20,35 @@ const SignIn = (props) => {
 
    const[email,setEmail] = useState("");
    const[password,setPassword] = useState("");
+   const navigate = useNavigate();
 
    const signInUser = () =>{
     signInWithEmailAndPassword(auth,email,password)
       .then((userCredential) => {
+        // user is sucessfully login 
         const user = userCredential.user;
-        console.log(user);
+        // console.log(user);
+        navigate('/');
       })
       .catch((err) => {
         const errorCode = err.code;
         const errorMessage = err.message;
         console.log(errorCode + " " + errorMessage);
       })
+    
    };
 
-
-
-  console.log(props);
+   onAuthStateChanged(auth,(user)=>{
+    if(user){
+      console.log(user);
+      const userid = user.uid;
+      console.log(userid);
+    }
+    else{
+      console.log("user is sign out ");
+    }
+   })
+  // console.log(props);
   return (
     <>
       <div className="loginContainer">
@@ -49,11 +62,11 @@ const SignIn = (props) => {
 
             <div className="signinData">
               <div className="signinEmail">
-                <MdEmail />
+                <MdEmail className="icons" />
                 <input type="email" placeholder="enter your email"  id="email" onChange={e=>setEmail(e.target.value)} value={email}/>
               </div>
               <div className="signinPassWord">
-                <RiLockPasswordFill />
+                <RiLockPasswordFill className="icons" />
                 <input type="password" placeholder=" enter your password" id="password" onChange={e => setPassword(e.target.value)} value={password} />
               </div>
 

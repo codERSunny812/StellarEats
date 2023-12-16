@@ -15,19 +15,23 @@ const auth = getAuth(app);
 
 
 const SignUp = ({ onsucessFullSignUp }) => {
+  const[userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  //funciton
+  //funcition
    const MainFunction = () => {
+
+    // manage the state of the user
      const handleState = () => {
        onsucessFullSignUp();
      };
 
-     const createUser = createUserWithEmailAndPassword(auth, email, password)
+     const createUser = createUserWithEmailAndPassword(auth, email, password , userName)
      .then((userCredential)=>{
+      // user  is sign up
       const user = userCredential.user;
-      console.log(user);
+      // console.log(user);
      })
      .catch((err)=>{
        const errorCode = err.code;
@@ -54,16 +58,16 @@ const SignUp = ({ onsucessFullSignUp }) => {
 
             <div className="signUpData">
               <div className="signUpName">
-                <FaUser />
-                <input type="text" placeholder="your name" id="name"/>
+                <FaUser className="icons" />
+                <input type="text" placeholder="your name" id="name" onChange={(e)=>setUserName(e.target.value)} value={userName}/>
               </div>
               <div className="signUpEmail">
-                <MdEmail />
+                <MdEmail className="icons" />
                 <input type="email" placeholder="enter your email"  id="email" onChange={e=> setEmail(e.target.value)}
                 value={email}/>
               </div>
               <div className="signUpPassWord">
-                <RiLockPasswordFill />
+                <RiLockPasswordFill className="icons" />
                 <input type="password" placeholder=" enter your password" id="password" onChange={e => setPassword(e.target.value)}
                   value={password} />
               </div>

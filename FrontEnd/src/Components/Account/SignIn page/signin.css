@@ -78,7 +78,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(128, 128, 128, 0.501);
+  background-color: rgba(128, 128, 128, 0.75);
   padding: 0 6px;
 }
 
@@ -153,9 +153,7 @@ label {
   }
 
   .animation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: none;
   }
 
   .signinAnim {
