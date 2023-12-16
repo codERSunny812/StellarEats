@@ -3,7 +3,7 @@ import "./Shimmer.css";
 const Shimmer = () => {
   return (
     <div className="bodyCard">
-      {Array(8)
+      {Array(6)
         .fill("")
         .map(() => (
 
