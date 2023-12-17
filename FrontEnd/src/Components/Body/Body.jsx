@@ -18,6 +18,7 @@ const Body = () => {
   const [filtredRestaurant, setFiltredRestaurant] = useState(null);
   const [allrestaurant, setAllRestaurant] = useState(null);
   const SearchBarContext = useContext(SearchContext);
+  const [carasoul,setCarasoul] = useState(null);
   // const [latitude, setLatitude] = useState(0);
   // const [longitude, setLongitude] = useState(0);
 
@@ -65,29 +66,51 @@ const Body = () => {
       //   `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&page_type=DESKTOP_WEB_LISTING`
       // );
       // console.log(data);
-      const json = await data?.json();
-      console.log(json?.data?.success?.cards);
-      // console.log(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-      // setFiltredRestaurant(
-      //   json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-      //     ?.restaurants
-      // );
-      // setAllRestaurant(
-      //   json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-      //     ?.restaurants
-      // );
 
-      setAllRestaurant(
-        json?.data?.success?.cards[4].gridWidget?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-      setFiltredRestaurant(
-        json?.data?.success?.cards[4].gridWidget?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-    } catch (error) {
+      if (!data.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const contentType = data.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')){
+        const json = await data?.json();
+        // // Normalize response to always be an array
+        // if (!Array.isArray(json)) {
+        //   json = [json];
+        // }
+        // console.log(json?.data?.success?.cards);
+        console.log(json.data.success.cards[0].gridWidget.gridElements.infoWithStyle.info);
+        if (json.data.success.cards.length == 5) {
+          setAllRestaurant(
+            json?.data?.success?.cards[4].gridWidget?.gridElements?.infoWithStyle
+              ?.restaurants
+          );
+          setFiltredRestaurant(
+            json?.data?.success?.cards[4].gridWidget?.gridElements?.infoWithStyle
+              ?.restaurants
+          );
+          setCarasoul(json.data.success.cards[0].gridWidget.gridElements.infoWithStyle.info);
+        }
+        if (json.data.success.cards.length == 4) {
+          setAllRestaurant(
+            json?.data?.success?.cards[3].gridWidget?.gridElements?.infoWithStyle
+              ?.restaurants
+          );
+          setFiltredRestaurant(
+            json?.data?.success?.cards[3].gridWidget?.gridElements?.infoWithStyle
+              ?.restaurants
+          );
+        }
+
+      }
+      else{
+        throw new Error('Invalid Content-Type');
+      }
+    }
+    catch (error) {
       console.error("Error fetching data:", error);
     }
+
   }
 
   // net connnectivity  checker hook
@@ -104,9 +127,27 @@ const Body = () => {
     );
   }
 
+const CarasoulData = ()=>{
+  {
+  //  carasoul.map((info)=>{
+  //   return(
+  //     <h1>hello </h1>
+  //   )
+  //  })
+  <h1></h1>
+  }
+
+}
+
   return (
     <>
+
+       {/* carasoul  */}
+
+      <CarasoulData/>
+
       {/* Search bar component     */}
+
       <div className="bodyComp">
         {SearchBarContext?.isSearchVisible && (
           <div className="searchCont">
@@ -131,7 +172,8 @@ const Body = () => {
                     />
                   </Link>
                 );
-              })
+              }) 
+             
             ) : (
               <NoRestaurant />
             )
