@@ -5,19 +5,26 @@ import Lottie from "lottie-react";
 import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
-import { BsTwitter } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
-import {getAuth,createUserWithEmailAndPassword}  from 'firebase/auth'
+import {getAuth,createUserWithEmailAndPassword , GoogleAuthProvider , signInWithPopup}  from 'firebase/auth'
 import {app} from '../../../../fireBaseConfig'
 
 // create instance of app 
 const auth = getAuth(app);
 
 
+const provider = new GoogleAuthProvider();
+
+
 const SignUp = ({ onsucessFullSignUp }) => {
   const[userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+
+
+
 
   //funcition
    const MainFunction = () => {
@@ -39,9 +46,17 @@ const SignUp = ({ onsucessFullSignUp }) => {
        console.log(errorCode+ " " + errorMessage);
      })
 
+
+
      handleState();
      
 
+   }
+
+   const handleLoginWithGoogle = () =>{
+    signInWithPopup(auth,provider)
+    .then((result)=> console.log(result))
+    .catch((error)=> console.log(error))
    }
 
  
@@ -59,17 +74,17 @@ const SignUp = ({ onsucessFullSignUp }) => {
             <div className="signUpData">
               <div className="signUpName">
                 <FaUser className="icons" />
-                <input type="text" placeholder="your name" id="name" onChange={(e)=>setUserName(e.target.value)} value={userName}/>
+                <input type="text" placeholder="your name" id="name" onChange={(e)=>setUserName(e.target.value)} value={userName} autoComplete="off"/>
               </div>
               <div className="signUpEmail">
                 <MdEmail className="icons" />
                 <input type="email" placeholder="enter your email"  id="email" onChange={e=> setEmail(e.target.value)}
-                value={email}/>
+                value={email} autoComplete="off"/>
               </div>
               <div className="signUpPassWord">
                 <RiLockPasswordFill className="icons" />
                 <input type="password" placeholder=" enter your password" id="password" onChange={e => setPassword(e.target.value)}
-                  value={password} />
+                  value={password} autoComplete="off" />
               </div>
 
               <button
@@ -84,8 +99,8 @@ const SignUp = ({ onsucessFullSignUp }) => {
             <div className="endSignUpData">
               <h4>or connect with social media</h4>
               <div className="socialMediaOne">
-                <BsTwitter />
-                <label> sign up with twitter</label>
+                <FcGoogle />
+                <label onClick={handleLoginWithGoogle}> sign up with google</label>
               </div>
               <div className="socialMediaTwo">
                 <FaFacebookF />

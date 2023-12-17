@@ -63,11 +63,11 @@ const SignIn = (props) => {
             <div className="signinData">
               <div className="signinEmail">
                 <MdEmail className="icons" />
-                <input type="email" placeholder="enter your email"  id="email" onChange={e=>setEmail(e.target.value)} value={email}/>
+                <input autoComplete="off" type="email" placeholder="enter your email"  id="email" onChange={e=>setEmail(e.target.value)} value={email}/>
               </div>
               <div className="signinPassWord">
                 <RiLockPasswordFill className="icons" />
-                <input type="password" placeholder=" enter your password" id="password" onChange={e => setPassword(e.target.value)} value={password} />
+                <input autoComplete="off" type="password" placeholder=" enter your password" id="password" onChange={e => setPassword(e.target.value)} value={password} />
               </div>
 
               <button type="submit" className="signinButton" id="btn" onClick={signInUser}>
