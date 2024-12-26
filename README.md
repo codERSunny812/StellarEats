@@ -1,4 +1,4 @@
-# FreshFood
+# Stellar Eats
 
 This is a food website which is basically shows the data of all the nearby restaurant in form of cards and you can check the distance of the restaurant from your place and when any user click on any of the card then then whole menu of that restaurant wil shown to the user .
 
